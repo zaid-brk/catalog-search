@@ -2,7 +2,7 @@
 
 A product search engine built in C++. I'm using it to explore how vector search works, especially when queries also have filters.
 
-The engine supports exact search and an IVF index that groups similar products together. You can filter by brand and color, change how many groups get searched, and compare the results and timings. There's also a simple planner that chooses between checking every eligible product and using the index.
+The engine supports exact search and an IVF index that groups similar products together. You can search for a brand to filter by, change how many groups get searched, and compare the results and timings. There's also a simple planner that chooses between checking every eligible product and using the index.
 
 C++ handles indexing, filtering, retrieval, and saving/loading the index. Python handles data preparation and text embeddings using MiniLM. The demo is TypeScript with Vite, with a FastAPI service connecting it to the C++ API.
 
@@ -26,7 +26,7 @@ Wait for `Real semantic catalog ready`, then start the app:
 
 Open http://127.0.0.1:8000. Ctrl+C stops both services.
 
-The app searches the loaded catalog, not the live internet. Brand and color are separate filters; it doesn't extract constraints like price from your search text.
+The app searches the loaded catalog, not the live internet. The optional brand filter suggests matching brands as you type; leave it blank to search all brands. It doesn't extract constraints like price from your search text.
 
 For a small offline demo after building:
 

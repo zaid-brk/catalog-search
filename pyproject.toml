@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "catalog-search"
+version = "0.1.0"
+description = "C++ vector retrieval engine with filtering and reproducible experiments"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "fastapi>=0.115,<1", "uvicorn>=0.30,<1", "httpx>=0.27,<1"]
+
+[project.optional-dependencies]
+semantic = ["sentence-transformers>=3,<6", "pyarrow>=16,<25"]
+bench = ["faiss-cpu>=1.8,<2", "matplotlib>=3.8,<4"]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.pytest.ini_options]
+testpaths = ["python/tests"]
+pythonpath = ["python"]

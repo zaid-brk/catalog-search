@@ -1,0 +1,1 @@
+{"threads":4,"queries":4000,"elapsed_seconds":5.91045458E-1,"queries_per_second":6.767668959905957E3,"p50_ms":5.6875E-1,"p95_ms":8.26125E-1,"peak_process_rss_bytes":94535680,"scope":"in-process C++ retrieval over cyclic precomputed queries; excludes HTTP, model inference, and load time; peak RSS includes index loading"}

@@ -1,6 +1,6 @@
 import "./style.css";
 
-interface Info { products: number; dimensions: number; clusters: number; brands: string[]; colors: string[]; semantic: boolean; provenance: string; }
+interface Info { products: number; dimensions: number; clusters: number; brands: string[]; semantic: boolean; provenance: string; }
 interface Hit { id: string; title: string; description: string; brand: string; color: string; score: number; }
 interface Result { hits: Hit[]; strategy: string; eligible: number; comparisons: number; clusters_searched: number; retrieval_ms: number; embedding_ms: number; total_ms: number; semantic: boolean; }
 const root = document.querySelector<HTMLElement>("#app")!;
@@ -11,7 +11,7 @@ root.innerHTML = `
   <form id="search-form">
     <label for="query">What are you looking for?</label>
     <div class="search-line"><input id="query" name="query" type="search" placeholder="Waterproof jacket for hiking" maxlength="512" required autocomplete="off"><button id="submit" type="submit" disabled>Search <span aria-hidden="true">↗</span></button></div>
-    <div class="filters"><div><label for="brand">Brand</label><select id="brand"><option value="">All brands</option></select></div><div><label for="color">Color</label><select id="color"><option value="">All colors</option></select></div></div>
+    <div class="filters"><label for="brand">Brand</label><input id="brand" type="search" list="brand-options" placeholder="Search brands…" maxlength="512" autocomplete="off" aria-describedby="brand-hint" disabled><datalist id="brand-options"></datalist><p id="brand-hint" class="hint">Choose a suggestion, or leave blank to search all brands.</p></div>
     <details><summary>Search settings</summary><div class="settings"><div><label for="strategy">Search method</label><select id="strategy"><option value="auto">Automatic</option><option value="exact">Exact · check every match</option><option value="ivf">IVF · search selected groups</option></select></div><div><label for="probes">Groups to search</label><input id="probes" type="number" min="1" value="8" max="4096"></div></div><p class="hint">More groups can improve agreement with exact search, at the cost of extra work.</p></details>
   </form>
   <div id="error" role="alert" hidden></div>
@@ -24,6 +24,13 @@ const query = element<HTMLInputElement>("query");
 const submit = element<HTMLButtonElement>("submit");
 const error = element<HTMLDivElement>("error");
 const results = element<HTMLDivElement>("results");
+const brand = element<HTMLInputElement>("brand");
+const brands = new Set<string>();
+const selectedBrand = () => brand.value.trim().replace(/[A-Z]/g, character => character.toLowerCase());
+brand.addEventListener("input", () => {
+  const value = selectedBrand();
+  brand.setCustomValidity(value && !brands.has(value) ? "Choose a brand from the suggestions, or clear this field to search all brands." : "");
+});
 const number = (value: number) => value.toLocaleString();
 const milliseconds = (value: number) => `${value.toFixed(value < 1 ? 3 : 1)} ms`;
 
@@ -43,7 +50,7 @@ function render(result: Result) {
   if (!result.hits.length) {
     const empty = document.createElement("div"); empty.className = "empty";
     const heading = document.createElement("h3"); heading.textContent = "No matches with these settings.";
-    const text = document.createElement("p"); text.textContent = result.eligible ? "Try exact search or search more groups." : "Try removing a brand or color filter.";
+    const text = document.createElement("p"); text.textContent = result.eligible ? "Try exact search or search more groups." : "Try clearing the brand filter.";
     empty.append(heading, text); results.append(empty);
   }
   for (const [i, hit] of result.hits.entries()) {
@@ -65,7 +72,7 @@ element<HTMLFormElement>("search-form").addEventListener("submit", async event =
   event.preventDefault(); if (!query.value.trim()) return;
   error.hidden = true; submit.disabled = true; submit.textContent = "Searching…"; results.setAttribute("aria-busy", "true");
   try {
-    const result = await fetchJson<Result>("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: query.value.trim(), brand: element<HTMLSelectElement>("brand").value, color: element<HTMLSelectElement>("color").value, strategy: element<HTMLSelectElement>("strategy").value, probes: Number(element<HTMLInputElement>("probes").value), k: 10 }) });
+    const result = await fetchJson<Result>("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: query.value.trim(), brand: selectedBrand(), strategy: element<HTMLSelectElement>("strategy").value, probes: Number(element<HTMLInputElement>("probes").value), k: 10 }) });
     render(result);
   } catch (cause) { showError(cause instanceof Error ? cause.message : "Search failed"); }
   finally { submit.disabled = false; submit.textContent = "Search ↗"; results.removeAttribute("aria-busy"); }
@@ -76,10 +83,13 @@ async function initialize() {
     const info = await fetchJson<Info>("/api/info");
     element("catalog-count").textContent = `${number(info.products)} products`;
     element("dataset-label").textContent = `${info.dimensions} dimensions · ${info.clusters} groups`;
-    for (const id of ["brand", "color"] as const) {
-      const select = element<HTMLSelectElement>(id);
-      for (const value of info[id === "brand" ? "brands" : "colors"]) { const option = document.createElement("option"); option.value = value; option.textContent = value; select.append(option); }
+    const options = document.createDocumentFragment();
+    for (const value of info.brands) {
+      brands.add(value);
+      const option = document.createElement("option"); option.value = value; options.append(option);
     }
+    element<HTMLDataListElement>("brand-options").replaceChildren(options);
+    brand.disabled = false;
     element<HTMLInputElement>("probes").max = String(Math.max(1, info.clusters));
     element<HTMLInputElement>("probes").value = String(Math.min(8, Math.max(1, info.clusters)));
     const note = element("mode-note"); note.hidden = false;

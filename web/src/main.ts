@@ -14,9 +14,10 @@ root.innerHTML = `
     <details><summary>Search settings</summary><div class="settings"><div><label for="strategy">Search method</label><select id="strategy"><option value="auto">Automatic</option><option value="exact">Exact</option><option value="ivf">IVF</option></select></div><div><label for="probes">Clusters to search</label><input id="probes" type="number" min="1" value="8" max="4096"></div></div></details>
   </form>
   <div id="error" role="alert" hidden></div>
-  <section id="search-results" aria-labelledby="results-title" hidden><div class="section-title"><h2 id="results-title">Results</h2><span id="result-count"></span></div><div id="results" aria-live="polite"></div>
-    <details class="search-stats"><summary>Search details</summary><dl><div><dt>Method</dt><dd id="method">—</dd></div><div><dt>Eligible products</dt><dd id="eligible">—</dd></div><div><dt>Products compared</dt><dd id="comparisons">—</dd></div><div><dt>Clusters searched</dt><dd id="groups">—</dd></div><div><dt>Retrieval time</dt><dd id="retrieval">—</dd></div><div><dt>Encoding time</dt><dd id="encoding">—</dd></div><div><dt>Server time</dt><dd id="total">—</dd></div></dl></details>
-  </section>`;
+  <div class="results-layout">
+    <section id="search-results" aria-labelledby="results-title" hidden><div class="section-title"><h2 id="results-title">Results</h2><span id="result-count"></span></div><div id="results" aria-live="polite"></div></section>
+    <aside class="search-stats" aria-labelledby="stats-title"><h2 id="stats-title">Search details</h2><dl><div><dt>Method</dt><dd id="method">—</dd></div><div><dt>Eligible products</dt><dd id="eligible">—</dd></div><div><dt>Products compared</dt><dd id="comparisons">—</dd></div><div><dt>Groups searched</dt><dd id="groups">—</dd></div><div><dt>C++ retrieval</dt><dd id="retrieval">—</dd></div><div><dt>Text encoding</dt><dd id="encoding">—</dd></div><div><dt>Server total</dt><dd id="total">—</dd></div></dl></aside>
+  </div>`;
 
 function element<T extends HTMLElement>(id: string): T { return document.getElementById(id) as T; }
 const query = element<HTMLInputElement>("query");

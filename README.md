@@ -58,7 +58,7 @@ build/catalog build --input data/synthetic-100k/catalog.jsonl --output data/synt
 .venv-semantic/bin/python -m catalog_search.evaluate --dataset data/synthetic-100k --index data/synthetic-100k/catalog.csidx --output benchmarks/runs/test
 ```
 
-The [saved experiment](benchmarks/example-synthetic-100k/REPORT.md) uses synthetic vectors. Those results don't establish performance on real product embeddings. Real catalog evaluation and planner tuning are still in progress.
+Saved runs include the original [synthetic experiment](benchmarks/example-synthetic-100k/REPORT.md) and real Amazon ESCI catalogs with [10,000](benchmarks/example-esci-10k/REPORT.md) and [100,000](benchmarks/example-esci-100k/REPORT.md) products. The [real-data results](docs/REAL_DATA_RESULTS.md) explain development-only planner calibration, held-out recall/latency, FAISS references, and reproduction commands. Retrieval timings exclude text encoding and HTTP; recall measures agreement with exact vector neighbors, not shopper relevance.
 
 There's also a small C++ allocation benchmark:
 

@@ -17,7 +17,8 @@ from .worker import Worker
 
 
 def jsonl(path):
-    return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
+    with Path(path).open(encoding="utf-8") as file:
+        return [json.loads(line) for line in file if line.strip()]
 
 
 def workloads(products):

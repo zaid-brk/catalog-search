@@ -1,0 +1,5105 @@
+{
+  "split": "dev",
+  "recommended_exact_cost_factor": 8,
+  "probes": 32,
+  "k": 10,
+  "minimum_dev_mean_recall_per_workload": 0.95,
+  "objective": "minimize dev retrieval time subject to mean vector recall target in each dev workload",
+  "warning": "A dev recall target is not a guarantee on unseen queries. Factor is workload/hardware/probe specific.",
+  "dev_query_ids": [
+    "0",
+    "1",
+    "10",
+    "1000",
+    "100001",
+    "100002",
+    "100005",
+    "100006",
+    "100007",
+    "100011",
+    "100024",
+    "100025",
+    "100026",
+    "100027",
+    "100028",
+    "100029",
+    "10003",
+    "100031",
+    "100032",
+    "100034",
+    "100035",
+    "100036",
+    "100040",
+    "100044",
+    "100045",
+    "10005",
+    "100056",
+    "100060",
+    "100061",
+    "100062",
+    "100067",
+    "100069",
+    "100073",
+    "100074",
+    "100075",
+    "100076",
+    "100077",
+    "100078",
+    "10008",
+    "100081",
+    "100082",
+    "100086",
+    "10009",
+    "100090",
+    "100091",
+    "100092",
+    "100095",
+    "1001",
+    "100100",
+    "100102",
+    "100103",
+    "100104",
+    "100107",
+    "10011",
+    "100111",
+    "100119",
+    "10012",
+    "100120",
+    "100121",
+    "100122",
+    "100124",
+    "100127",
+    "100138",
+    "100139",
+    "100140",
+    "100141",
+    "100142",
+    "100145",
+    "100148",
+    "10015",
+    "100150",
+    "100154",
+    "100155",
+    "100157",
+    "100159",
+    "100161",
+    "100166",
+    "100167",
+    "10017",
+    "100170",
+    "100171",
+    "100172",
+    "100174",
+    "100175",
+    "100178",
+    "100179",
+    "100180",
+    "100181",
+    "100182",
+    "100184",
+    "100185",
+    "100186",
+    "100188",
+    "10019",
+    "100191",
+    "100192",
+    "100193",
+    "100196",
+    "100197",
+    "100198",
+    "100199",
+    "1002",
+    "100201",
+    "100203",
+    "100204",
+    "100205",
+    "100206",
+    "100207",
+    "10021",
+    "100210",
+    "100211",
+    "100212",
+    "100217",
+    "100219",
+    "10022",
+    "100220",
+    "100222",
+    "100228",
+    "100230",
+    "100231",
+    "100234",
+    "100235",
+    "100236",
+    "100238",
+    "10024",
+    "100258",
+    "100259",
+    "100261",
+    "100263",
+    "100268",
+    "100269",
+    "100272",
+    "100273",
+    "100274",
+    "100275",
+    "100278",
+    "10029",
+    "100295",
+    "100296",
+    "100298",
+    "100299",
+    "1003",
+    "10030",
+    "100300",
+    "100306",
+    "10031",
+    "100312",
+    "100314",
+    "100316",
+    "100318",
+    "10032",
+    "100322",
+    "100323",
+    "100329",
+    "10033",
+    "100333",
+    "100335",
+    "100336",
+    "100337",
+    "100338",
+    "100339",
+    "100340",
+    "100341",
+    "100342",
+    "100343",
+    "100346",
+    "100347",
+    "100348",
+    "10035",
+    "100351",
+    "100357",
+    "100358",
+    "100359",
+    "10036",
+    "100361",
+    "100363",
+    "100365",
+    "10037",
+    "100373",
+    "100377",
+    "100378",
+    "100379",
+    "10038",
+    "100381",
+    "100382",
+    "100383",
+    "100384",
+    "100386",
+    "100389",
+    "10039",
+    "100395",
+    "100397",
+    "100398",
+    "100399",
+    "1004",
+    "100400",
+    "100402",
+    "100409",
+    "100411",
+    "100412"
+  ],
+  "candidate_scores": [
+    {
+      "factor": 1e-06,
+      "total_predicted_ms": 5193.012906999996,
+      "mean_recall_by_workload": {
+        "all": 1.0,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 0.125,
+      "total_predicted_ms": 5193.012906999996,
+      "mean_recall_by_workload": {
+        "all": 1.0,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 0.25,
+      "total_predicted_ms": 5193.012906999996,
+      "mean_recall_by_workload": {
+        "all": 1.0,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 0.5,
+      "total_predicted_ms": 5193.012906999996,
+      "mean_recall_by_workload": {
+        "all": 1.0,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 1,
+      "total_predicted_ms": 4053.6234459999996,
+      "mean_recall_by_workload": {
+        "all": 0.991,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 2,
+      "total_predicted_ms": 4053.6234459999996,
+      "mean_recall_by_workload": {
+        "all": 0.991,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 4,
+      "total_predicted_ms": 4053.6234459999996,
+      "mean_recall_by_workload": {
+        "all": 0.991,
+        "brand-narrow": 1.0,
+        "color-medium": 1.0
+      },
+      "feasible": true
+    },
+    {
+      "factor": 8,
+      "total_predicted_ms": 3774.9764860000014,
+      "mean_recall_by_workload": {
+        "all": 0.991,
+        "brand-narrow": 1.0,
+        "color-medium": 0.984
+      },
+      "feasible": true
+    },
+    {
+      "factor": 16,
+      "total_predicted_ms": 3774.9764860000014,
+      "mean_recall_by_workload": {
+        "all": 0.991,
+        "brand-narrow": 1.0,
+        "color-medium": 0.984
+      },
+      "feasible": true
+    }
+  ],
+  "records": [
+    {
+      "query_id": "0",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.470041,
+      "ivf_ms": 14.345292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "0",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130709,
+      "ivf_ms": 0.071875,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "0",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.060209,
+      "ivf_ms": 1.618125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.431417,
+      "ivf_ms": 16.185416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127833,
+      "ivf_ms": 0.154209,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.070792,
+      "ivf_ms": 1.59575,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.63675,
+      "ivf_ms": 17.926042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128708,
+      "ivf_ms": 0.145708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.192334,
+      "ivf_ms": 1.552625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1000",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.810625,
+      "ivf_ms": 16.722916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1000",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1265,
+      "ivf_ms": 0.061125,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "1000",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.96425,
+      "ivf_ms": 1.617458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100001",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.065583,
+      "ivf_ms": 17.943875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100001",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.151542,
+      "ivf_ms": 0.0675,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100001",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.973791,
+      "ivf_ms": 1.530084,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100002",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.749333,
+      "ivf_ms": 19.180167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100002",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.15075,
+      "ivf_ms": 0.215292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100002",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.140209,
+      "ivf_ms": 2.063792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100005",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 24.54775,
+      "ivf_ms": 20.429958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100005",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127417,
+      "ivf_ms": 0.142541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100005",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.289708,
+      "ivf_ms": 1.991708,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100006",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.050208,
+      "ivf_ms": 18.95125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100006",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.138209,
+      "ivf_ms": 0.136291,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100006",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.296375,
+      "ivf_ms": 1.584583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100007",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.8655,
+      "ivf_ms": 17.494125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100007",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129584,
+      "ivf_ms": 0.136791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100007",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.348875,
+      "ivf_ms": 1.504958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100011",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 24.410667,
+      "ivf_ms": 20.991625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100011",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1325,
+      "ivf_ms": 0.1715,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100011",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.032875,
+      "ivf_ms": 2.082625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100024",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.661459,
+      "ivf_ms": 17.124,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100024",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123375,
+      "ivf_ms": 0.146417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100024",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.904667,
+      "ivf_ms": 1.592666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100025",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.612791,
+      "ivf_ms": 16.78475,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100025",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123459,
+      "ivf_ms": 0.14425,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100025",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.083625,
+      "ivf_ms": 1.794166,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100026",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.610084,
+      "ivf_ms": 18.005,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100026",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122667,
+      "ivf_ms": 0.169209,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100026",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.997916,
+      "ivf_ms": 1.838375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100027",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.050166,
+      "ivf_ms": 17.577666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100027",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125041,
+      "ivf_ms": 0.14725,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100027",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.557583,
+      "ivf_ms": 1.974916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100028",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.625834,
+      "ivf_ms": 16.224333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100028",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129542,
+      "ivf_ms": 0.162542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100028",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.970667,
+      "ivf_ms": 1.677875,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100029",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.091708,
+      "ivf_ms": 17.295125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100029",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131667,
+      "ivf_ms": 0.171333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100029",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.096333,
+      "ivf_ms": 1.761375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10003",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.54375,
+      "ivf_ms": 17.848375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10003",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127584,
+      "ivf_ms": 0.163625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10003",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.885458,
+      "ivf_ms": 1.541666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100031",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.43175,
+      "ivf_ms": 16.753875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100031",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124334,
+      "ivf_ms": 0.168667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100031",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.980875,
+      "ivf_ms": 1.919625,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100032",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.578833,
+      "ivf_ms": 15.174625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100032",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129709,
+      "ivf_ms": 0.15575,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100032",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.948,
+      "ivf_ms": 1.622333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100034",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.391458,
+      "ivf_ms": 13.757958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100034",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124875,
+      "ivf_ms": 0.140125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100034",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.811875,
+      "ivf_ms": 1.52025,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100035",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.618,
+      "ivf_ms": 14.472416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100035",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124416,
+      "ivf_ms": 0.092958,
+      "ivf_recall": 0.5
+    },
+    {
+      "query_id": "100035",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.025458,
+      "ivf_ms": 1.949875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100036",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.414583,
+      "ivf_ms": 16.387417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100036",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129416,
+      "ivf_ms": 0.144042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100036",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.01825,
+      "ivf_ms": 1.893208,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100040",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.809958,
+      "ivf_ms": 14.94475,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100040",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126542,
+      "ivf_ms": 0.164875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100040",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.887042,
+      "ivf_ms": 1.773708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100044",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.822209,
+      "ivf_ms": 16.144583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100044",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1235,
+      "ivf_ms": 0.132292,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100044",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.169042,
+      "ivf_ms": 1.86725,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100045",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.069083,
+      "ivf_ms": 16.76875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100045",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132375,
+      "ivf_ms": 0.191709,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100045",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.976541,
+      "ivf_ms": 1.818166,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10005",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.966833,
+      "ivf_ms": 18.469791,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10005",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130459,
+      "ivf_ms": 0.132666,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "10005",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.973041,
+      "ivf_ms": 1.399084,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100056",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.895709,
+      "ivf_ms": 18.538916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100056",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126958,
+      "ivf_ms": 0.170875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100056",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.952167,
+      "ivf_ms": 1.702,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100060",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.714334,
+      "ivf_ms": 18.629792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100060",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122958,
+      "ivf_ms": 0.172667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100060",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.895625,
+      "ivf_ms": 2.098875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100061",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.742875,
+      "ivf_ms": 15.421916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100061",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124083,
+      "ivf_ms": 0.165875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100061",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.07025,
+      "ivf_ms": 2.335958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100062",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.682,
+      "ivf_ms": 19.072583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100062",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123875,
+      "ivf_ms": 0.18275,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100062",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.982041,
+      "ivf_ms": 2.318917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100067",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.80025,
+      "ivf_ms": 17.965584,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100067",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125458,
+      "ivf_ms": 0.168458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100067",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.5395,
+      "ivf_ms": 2.139458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100069",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.55125,
+      "ivf_ms": 16.930459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100069",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.121792,
+      "ivf_ms": 0.160875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100069",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.895,
+      "ivf_ms": 1.529708,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100073",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.781958,
+      "ivf_ms": 17.051917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100073",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122709,
+      "ivf_ms": 0.168083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100073",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.951916,
+      "ivf_ms": 1.84825,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100074",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.657583,
+      "ivf_ms": 17.837625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100074",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125209,
+      "ivf_ms": 0.18375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100074",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.418209,
+      "ivf_ms": 1.898292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100075",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.783709,
+      "ivf_ms": 18.464666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100075",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123916,
+      "ivf_ms": 0.173792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100075",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.053584,
+      "ivf_ms": 1.924,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100076",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.639042,
+      "ivf_ms": 17.672125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100076",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125,
+      "ivf_ms": 0.1695,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100076",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.928,
+      "ivf_ms": 1.864708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100077",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.459417,
+      "ivf_ms": 17.854792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100077",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12375,
+      "ivf_ms": 0.169958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100077",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.879083,
+      "ivf_ms": 1.687417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100078",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.442625,
+      "ivf_ms": 17.565375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100078",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126834,
+      "ivf_ms": 0.169,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100078",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.084542,
+      "ivf_ms": 1.849541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10008",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.660667,
+      "ivf_ms": 16.067083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10008",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134166,
+      "ivf_ms": 0.147084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10008",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.983792,
+      "ivf_ms": 1.490167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100081",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.60075,
+      "ivf_ms": 14.735791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100081",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1275,
+      "ivf_ms": 0.046958,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "100081",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.856417,
+      "ivf_ms": 1.598709,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100082",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.453375,
+      "ivf_ms": 14.0045,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100082",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124792,
+      "ivf_ms": 0.108375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100082",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.075916,
+      "ivf_ms": 1.640417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100086",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.429583,
+      "ivf_ms": 14.88875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100086",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134667,
+      "ivf_ms": 0.060792,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "100086",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.853083,
+      "ivf_ms": 1.950333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10009",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.768416,
+      "ivf_ms": 16.141541,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10009",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127458,
+      "ivf_ms": 0.052125,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "10009",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.225542,
+      "ivf_ms": 1.486334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100090",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.908375,
+      "ivf_ms": 16.011041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100090",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126209,
+      "ivf_ms": 0.183125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100090",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.21125,
+      "ivf_ms": 1.681833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100091",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.636375,
+      "ivf_ms": 18.269416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100091",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125666,
+      "ivf_ms": 0.182084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100091",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.134833,
+      "ivf_ms": 1.921542,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100092",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.084667,
+      "ivf_ms": 15.183,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100092",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129708,
+      "ivf_ms": 0.151625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100092",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.210917,
+      "ivf_ms": 2.3765,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100095",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.418416,
+      "ivf_ms": 17.301042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100095",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.138667,
+      "ivf_ms": 0.121208,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100095",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.292,
+      "ivf_ms": 2.245375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1001",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.636333,
+      "ivf_ms": 17.681583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1001",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.133833,
+      "ivf_ms": 0.149542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1001",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.939541,
+      "ivf_ms": 1.540667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100100",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.826209,
+      "ivf_ms": 16.257958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100100",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124209,
+      "ivf_ms": 0.133875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100100",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.253541,
+      "ivf_ms": 1.897917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100102",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.86725,
+      "ivf_ms": 15.545458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100102",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12475,
+      "ivf_ms": 0.122666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100102",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.935416,
+      "ivf_ms": 1.511458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100103",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.141625,
+      "ivf_ms": 18.65475,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100103",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132917,
+      "ivf_ms": 0.158917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100103",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.094167,
+      "ivf_ms": 1.781042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100104",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.557375,
+      "ivf_ms": 13.365917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100104",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132625,
+      "ivf_ms": 0.050542,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100104",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.188167,
+      "ivf_ms": 1.560125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100107",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.622375,
+      "ivf_ms": 14.994792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100107",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127958,
+      "ivf_ms": 0.043625,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "100107",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.93525,
+      "ivf_ms": 1.200292,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10011",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.886583,
+      "ivf_ms": 18.89425,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10011",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131792,
+      "ivf_ms": 0.132375,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "10011",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.019834,
+      "ivf_ms": 1.480791,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100111",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.6955,
+      "ivf_ms": 15.265125,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100111",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127792,
+      "ivf_ms": 0.044125,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100111",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.160584,
+      "ivf_ms": 1.652375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100119",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.640458,
+      "ivf_ms": 18.113375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100119",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124042,
+      "ivf_ms": 0.131333,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100119",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.827334,
+      "ivf_ms": 1.672166,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10012",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.628958,
+      "ivf_ms": 18.019666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10012",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125542,
+      "ivf_ms": 0.039584,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "10012",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.949791,
+      "ivf_ms": 0.930625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100120",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.375958,
+      "ivf_ms": 16.218167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100120",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128959,
+      "ivf_ms": 0.058208,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100120",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.942625,
+      "ivf_ms": 1.123458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100121",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.457083,
+      "ivf_ms": 17.664792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100121",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124334,
+      "ivf_ms": 0.14575,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100121",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.0915,
+      "ivf_ms": 1.692333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100122",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.564958,
+      "ivf_ms": 16.237,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100122",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128416,
+      "ivf_ms": 0.058375,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100122",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.992583,
+      "ivf_ms": 1.322041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100124",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.422375,
+      "ivf_ms": 15.514,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100124",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130042,
+      "ivf_ms": 0.046875,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100124",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.1625,
+      "ivf_ms": 1.624667,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100127",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.412083,
+      "ivf_ms": 15.113584,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100127",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129291,
+      "ivf_ms": 0.033583,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100127",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.099375,
+      "ivf_ms": 1.266792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100138",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.763708,
+      "ivf_ms": 15.586209,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100138",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.146,
+      "ivf_ms": 0.048708,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100138",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.96875,
+      "ivf_ms": 1.510166,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100139",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.828667,
+      "ivf_ms": 16.754125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100139",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130291,
+      "ivf_ms": 0.047958,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100139",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.968708,
+      "ivf_ms": 1.550041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100140",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.113541,
+      "ivf_ms": 17.852667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100140",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.135625,
+      "ivf_ms": 0.1465,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100140",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.085834,
+      "ivf_ms": 1.597042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100141",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.924125,
+      "ivf_ms": 16.371208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100141",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129167,
+      "ivf_ms": 0.052875,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100141",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.949583,
+      "ivf_ms": 1.316792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100142",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.412792,
+      "ivf_ms": 18.44125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100142",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124708,
+      "ivf_ms": 0.05125,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100142",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.684584,
+      "ivf_ms": 2.15775,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100145",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.714167,
+      "ivf_ms": 18.864041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100145",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127,
+      "ivf_ms": 0.148792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100145",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.891958,
+      "ivf_ms": 1.754333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100148",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.704375,
+      "ivf_ms": 18.181917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100148",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123583,
+      "ivf_ms": 0.088209,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100148",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.945041,
+      "ivf_ms": 1.720041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10015",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.699875,
+      "ivf_ms": 16.262,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10015",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132292,
+      "ivf_ms": 0.061541,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "10015",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.462,
+      "ivf_ms": 1.3115,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100150",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.719416,
+      "ivf_ms": 18.957334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100150",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125916,
+      "ivf_ms": 0.150792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100150",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.258417,
+      "ivf_ms": 1.825625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100154",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.730833,
+      "ivf_ms": 15.292916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100154",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129541,
+      "ivf_ms": 0.049,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100154",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.926458,
+      "ivf_ms": 1.309417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100155",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.651833,
+      "ivf_ms": 18.429583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100155",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12375,
+      "ivf_ms": 0.16825,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100155",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.977375,
+      "ivf_ms": 1.684542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100157",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.867625,
+      "ivf_ms": 16.742583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100157",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.143084,
+      "ivf_ms": 0.123,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100157",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.007583,
+      "ivf_ms": 1.523208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100159",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.025709,
+      "ivf_ms": 16.397083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100159",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.144083,
+      "ivf_ms": 0.053333,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100159",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.979583,
+      "ivf_ms": 1.467542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100161",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.919583,
+      "ivf_ms": 15.976708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100161",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129083,
+      "ivf_ms": 0.045208,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100161",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.996708,
+      "ivf_ms": 1.706209,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100166",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.128333,
+      "ivf_ms": 18.8805,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100166",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12825,
+      "ivf_ms": 0.179709,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100166",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.914166,
+      "ivf_ms": 2.017667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100167",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.658042,
+      "ivf_ms": 17.383417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100167",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126375,
+      "ivf_ms": 0.133667,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100167",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.839334,
+      "ivf_ms": 1.382875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10017",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.42325,
+      "ivf_ms": 17.769958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10017",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127792,
+      "ivf_ms": 0.149375,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10017",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.838541,
+      "ivf_ms": 1.676375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100170",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.769375,
+      "ivf_ms": 17.842583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100170",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12425,
+      "ivf_ms": 0.1635,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100170",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.867625,
+      "ivf_ms": 1.748334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100171",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.400458,
+      "ivf_ms": 17.332666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100171",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128334,
+      "ivf_ms": 0.072,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100171",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.926,
+      "ivf_ms": 1.441333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100172",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.416625,
+      "ivf_ms": 17.237291,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100172",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126042,
+      "ivf_ms": 0.081084,
+      "ivf_recall": 0.7
+    },
+    {
+      "query_id": "100172",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.837416,
+      "ivf_ms": 1.395042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100174",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.6355,
+      "ivf_ms": 16.751417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100174",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127333,
+      "ivf_ms": 0.035375,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100174",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.366041,
+      "ivf_ms": 0.916292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100175",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.673459,
+      "ivf_ms": 15.367875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100175",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.142542,
+      "ivf_ms": 0.133833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100175",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.106542,
+      "ivf_ms": 1.552625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100178",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.135666,
+      "ivf_ms": 17.267292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100178",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.146666,
+      "ivf_ms": 0.161084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100178",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.7655,
+      "ivf_ms": 2.051417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100179",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.932792,
+      "ivf_ms": 15.657375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100179",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130709,
+      "ivf_ms": 0.034542,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100179",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.857,
+      "ivf_ms": 1.460583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100180",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.019375,
+      "ivf_ms": 17.85725,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100180",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130417,
+      "ivf_ms": 0.153291,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100180",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.305875,
+      "ivf_ms": 1.818208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100181",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.765875,
+      "ivf_ms": 17.428333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100181",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131666,
+      "ivf_ms": 0.124459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100181",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.143667,
+      "ivf_ms": 1.703209,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100182",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.908875,
+      "ivf_ms": 18.203125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100182",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123625,
+      "ivf_ms": 0.169834,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100182",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.31225,
+      "ivf_ms": 2.190958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100184",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.706416,
+      "ivf_ms": 17.852208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100184",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123584,
+      "ivf_ms": 0.124792,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100184",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.339291,
+      "ivf_ms": 1.36075,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100185",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.757833,
+      "ivf_ms": 17.332417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100185",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125083,
+      "ivf_ms": 0.163916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100185",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.289791,
+      "ivf_ms": 1.7245,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100186",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.671417,
+      "ivf_ms": 17.243208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100186",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1235,
+      "ivf_ms": 0.153292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100186",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.934417,
+      "ivf_ms": 1.799166,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100188",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.644,
+      "ivf_ms": 16.537083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100188",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127417,
+      "ivf_ms": 0.144666,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100188",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.125,
+      "ivf_ms": 1.559791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10019",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.702583,
+      "ivf_ms": 17.411292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10019",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.133291,
+      "ivf_ms": 0.120042,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10019",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.216167,
+      "ivf_ms": 1.298292,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100191",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.9265,
+      "ivf_ms": 17.678416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100191",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123,
+      "ivf_ms": 0.106625,
+      "ivf_recall": 0.7
+    },
+    {
+      "query_id": "100191",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.959875,
+      "ivf_ms": 1.383917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100192",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.909,
+      "ivf_ms": 17.293334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100192",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.150959,
+      "ivf_ms": 0.08675,
+      "ivf_recall": 0.5
+    },
+    {
+      "query_id": "100192",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.039875,
+      "ivf_ms": 1.938,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100193",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.966792,
+      "ivf_ms": 17.379458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100193",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128208,
+      "ivf_ms": 0.107917,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100193",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.020333,
+      "ivf_ms": 1.324959,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100196",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.641583,
+      "ivf_ms": 14.816042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100196",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.136541,
+      "ivf_ms": 0.034167,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100196",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.839375,
+      "ivf_ms": 1.607917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100197",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.352875,
+      "ivf_ms": 17.034458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100197",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131958,
+      "ivf_ms": 0.044916,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100197",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.839875,
+      "ivf_ms": 1.28275,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100198",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.700625,
+      "ivf_ms": 17.95325,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100198",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.136291,
+      "ivf_ms": 0.131209,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100198",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.845167,
+      "ivf_ms": 1.467625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100199",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.560333,
+      "ivf_ms": 16.225917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100199",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125834,
+      "ivf_ms": 0.113625,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100199",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.082334,
+      "ivf_ms": 1.588459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1002",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.39,
+      "ivf_ms": 16.351708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1002",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132292,
+      "ivf_ms": 0.047666,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "1002",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.858084,
+      "ivf_ms": 1.425542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100201",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.641375,
+      "ivf_ms": 17.001042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100201",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.132,
+      "ivf_ms": 0.062,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100201",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.944458,
+      "ivf_ms": 1.314,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100203",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.665958,
+      "ivf_ms": 15.880042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100203",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127791,
+      "ivf_ms": 0.053041,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100203",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.29575,
+      "ivf_ms": 1.289375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100204",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.822167,
+      "ivf_ms": 15.5065,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100204",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127292,
+      "ivf_ms": 0.049584,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "100204",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.948375,
+      "ivf_ms": 1.451541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100205",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.681042,
+      "ivf_ms": 18.760875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100205",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12725,
+      "ivf_ms": 0.149167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100205",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.279708,
+      "ivf_ms": 1.920625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100206",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.97275,
+      "ivf_ms": 19.101625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100206",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128625,
+      "ivf_ms": 0.153042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100206",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.232709,
+      "ivf_ms": 2.085208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100207",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.75,
+      "ivf_ms": 19.888041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100207",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12875,
+      "ivf_ms": 0.148875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100207",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.216917,
+      "ivf_ms": 1.979625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10021",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.711042,
+      "ivf_ms": 19.361834,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10021",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129334,
+      "ivf_ms": 0.11475,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "10021",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.288208,
+      "ivf_ms": 1.743834,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100210",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.63325,
+      "ivf_ms": 18.079167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100210",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125125,
+      "ivf_ms": 0.147334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100210",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.633334,
+      "ivf_ms": 1.880125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100211",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.033625,
+      "ivf_ms": 19.534458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100211",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127583,
+      "ivf_ms": 0.1535,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100211",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.084375,
+      "ivf_ms": 1.772833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100212",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.860209,
+      "ivf_ms": 19.986958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100212",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130959,
+      "ivf_ms": 0.173541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100212",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.831334,
+      "ivf_ms": 1.815375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100217",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.62475,
+      "ivf_ms": 15.801791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100217",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134959,
+      "ivf_ms": 0.052375,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100217",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.150292,
+      "ivf_ms": 1.361292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100219",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.816625,
+      "ivf_ms": 14.478292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100219",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127,
+      "ivf_ms": 0.042833,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100219",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.258291,
+      "ivf_ms": 1.566542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10022",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.994,
+      "ivf_ms": 18.733583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10022",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.140083,
+      "ivf_ms": 0.174583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10022",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.076709,
+      "ivf_ms": 1.652208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100220",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.825916,
+      "ivf_ms": 18.365958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100220",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128333,
+      "ivf_ms": 0.122584,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100220",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.9665,
+      "ivf_ms": 1.604375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100222",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.710208,
+      "ivf_ms": 16.95675,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100222",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1255,
+      "ivf_ms": 0.040375,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100222",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.106958,
+      "ivf_ms": 1.468708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100228",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.477666,
+      "ivf_ms": 15.121833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100228",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131333,
+      "ivf_ms": 0.038292,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "100228",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.874209,
+      "ivf_ms": 1.441584,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100230",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.422583,
+      "ivf_ms": 15.903416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100230",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12475,
+      "ivf_ms": 0.108375,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100230",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.946291,
+      "ivf_ms": 1.630208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100231",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.647958,
+      "ivf_ms": 17.323708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100231",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126125,
+      "ivf_ms": 0.131209,
+      "ivf_recall": 0.7
+    },
+    {
+      "query_id": "100231",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.018375,
+      "ivf_ms": 1.581667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100234",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.522375,
+      "ivf_ms": 17.15225,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100234",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131375,
+      "ivf_ms": 0.050334,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100234",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.919542,
+      "ivf_ms": 1.397542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100235",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.456792,
+      "ivf_ms": 15.54875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100235",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129542,
+      "ivf_ms": 0.048459,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100235",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.89175,
+      "ivf_ms": 1.459833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100236",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.611375,
+      "ivf_ms": 15.640833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100236",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1255,
+      "ivf_ms": 0.111417,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100236",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.933417,
+      "ivf_ms": 1.523375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100238",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.624833,
+      "ivf_ms": 16.779667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100238",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127,
+      "ivf_ms": 0.140458,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100238",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.912875,
+      "ivf_ms": 1.666625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10024",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.597708,
+      "ivf_ms": 14.52625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10024",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.163708,
+      "ivf_ms": 0.049416,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "10024",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.009583,
+      "ivf_ms": 1.20675,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100258",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.646667,
+      "ivf_ms": 16.279916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100258",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128416,
+      "ivf_ms": 0.048292,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100258",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.975708,
+      "ivf_ms": 1.112458,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100259",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.677291,
+      "ivf_ms": 17.506667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100259",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124084,
+      "ivf_ms": 0.119709,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100259",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.881458,
+      "ivf_ms": 1.268209,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100261",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.027833,
+      "ivf_ms": 17.670375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100261",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.144959,
+      "ivf_ms": 0.082375,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100261",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.028167,
+      "ivf_ms": 1.666583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100263",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.901542,
+      "ivf_ms": 17.178084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100263",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127041,
+      "ivf_ms": 0.04,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "100263",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.943958,
+      "ivf_ms": 1.334666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100268",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.617708,
+      "ivf_ms": 17.205709,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100268",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128083,
+      "ivf_ms": 0.04275,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100268",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.349458,
+      "ivf_ms": 1.562583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100269",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.744583,
+      "ivf_ms": 18.410292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100269",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123958,
+      "ivf_ms": 0.042542,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100269",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.980125,
+      "ivf_ms": 1.297334,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100272",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.801292,
+      "ivf_ms": 18.496083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100272",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124875,
+      "ivf_ms": 0.111458,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100272",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.114875,
+      "ivf_ms": 1.529292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100273",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.366208,
+      "ivf_ms": 18.249792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100273",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.133834,
+      "ivf_ms": 0.108,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100273",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.074667,
+      "ivf_ms": 1.418167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100274",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.710625,
+      "ivf_ms": 17.2585,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100274",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.136542,
+      "ivf_ms": 0.075042,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100274",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.160833,
+      "ivf_ms": 1.585334,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100275",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.430333,
+      "ivf_ms": 17.508625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100275",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.135083,
+      "ivf_ms": 0.135541,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100275",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.630875,
+      "ivf_ms": 1.96425,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100278",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.343792,
+      "ivf_ms": 17.26775,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100278",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131125,
+      "ivf_ms": 0.0915,
+      "ivf_recall": 0.4
+    },
+    {
+      "query_id": "100278",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.128875,
+      "ivf_ms": 1.56675,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "10029",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.864,
+      "ivf_ms": 17.08,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10029",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.138583,
+      "ivf_ms": 0.055709,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "10029",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.42475,
+      "ivf_ms": 1.513042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100295",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.284417,
+      "ivf_ms": 16.357833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100295",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134458,
+      "ivf_ms": 0.178542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100295",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.131083,
+      "ivf_ms": 2.014333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100296",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.719208,
+      "ivf_ms": 18.962416,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100296",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1235,
+      "ivf_ms": 0.170083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100296",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.863583,
+      "ivf_ms": 1.980334,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100298",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.617541,
+      "ivf_ms": 16.166375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100298",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.136333,
+      "ivf_ms": 0.121,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100298",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.971625,
+      "ivf_ms": 1.441542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100299",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.643166,
+      "ivf_ms": 14.89075,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100299",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1305,
+      "ivf_ms": 0.113459,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100299",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.848208,
+      "ivf_ms": 1.806375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1003",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.46,
+      "ivf_ms": 15.445458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1003",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.133709,
+      "ivf_ms": 0.050417,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "1003",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.066959,
+      "ivf_ms": 1.624166,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10030",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.44575,
+      "ivf_ms": 15.803167,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "10030",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.136166,
+      "ivf_ms": 0.047709,
+      "ivf_recall": 0.1
+    },
+    {
+      "query_id": "10030",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.13975,
+      "ivf_ms": 1.400167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100300",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.50375,
+      "ivf_ms": 17.704792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100300",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130083,
+      "ivf_ms": 0.107833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100300",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.056,
+      "ivf_ms": 1.8505,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100306",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.836125,
+      "ivf_ms": 17.53825,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100306",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134042,
+      "ivf_ms": 0.056458,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "100306",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.47725,
+      "ivf_ms": 1.718541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10031",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.626209,
+      "ivf_ms": 16.625208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10031",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130167,
+      "ivf_ms": 0.039667,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "10031",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.048,
+      "ivf_ms": 1.064125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100312",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.339791,
+      "ivf_ms": 18.599875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100312",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128333,
+      "ivf_ms": 0.175375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100312",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.1105,
+      "ivf_ms": 1.8935,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100314",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.976208,
+      "ivf_ms": 18.413208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100314",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123542,
+      "ivf_ms": 0.138917,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100314",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.934875,
+      "ivf_ms": 1.885042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100316",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.79925,
+      "ivf_ms": 18.817792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100316",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12775,
+      "ivf_ms": 0.1315,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100316",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.965208,
+      "ivf_ms": 1.558041,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100318",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.899417,
+      "ivf_ms": 19.510291,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100318",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124625,
+      "ivf_ms": 0.146792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100318",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.044042,
+      "ivf_ms": 1.941416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10032",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.9255,
+      "ivf_ms": 16.008333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10032",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.13975,
+      "ivf_ms": 0.052792,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "10032",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.038875,
+      "ivf_ms": 1.480416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100322",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.69725,
+      "ivf_ms": 17.40675,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100322",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122334,
+      "ivf_ms": 0.178875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100322",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.872333,
+      "ivf_ms": 1.882125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100323",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.517875,
+      "ivf_ms": 15.899292,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100323",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.146458,
+      "ivf_ms": 0.170375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100323",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.95775,
+      "ivf_ms": 1.706417,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100329",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.670375,
+      "ivf_ms": 18.74175,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100329",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123,
+      "ivf_ms": 0.167084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100329",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.922667,
+      "ivf_ms": 1.693167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10033",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.747625,
+      "ivf_ms": 16.255167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10033",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.156083,
+      "ivf_ms": 0.065041,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "10033",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.036792,
+      "ivf_ms": 1.564,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100333",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.286458,
+      "ivf_ms": 18.385834,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100333",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124792,
+      "ivf_ms": 0.172875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100333",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.885792,
+      "ivf_ms": 2.150541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100335",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.012583,
+      "ivf_ms": 17.061208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100335",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122708,
+      "ivf_ms": 0.16925,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100335",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.912417,
+      "ivf_ms": 2.050833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100336",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.545125,
+      "ivf_ms": 16.627417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100336",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127334,
+      "ivf_ms": 0.175375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100336",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.889333,
+      "ivf_ms": 1.934666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100337",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.434041,
+      "ivf_ms": 16.240542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100337",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.126459,
+      "ivf_ms": 0.167542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100337",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.8645,
+      "ivf_ms": 1.896542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100338",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.373292,
+      "ivf_ms": 17.286708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100338",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122833,
+      "ivf_ms": 0.167125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100338",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.176958,
+      "ivf_ms": 2.409583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100339",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.603834,
+      "ivf_ms": 16.184083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100339",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129834,
+      "ivf_ms": 0.173167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100339",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.856042,
+      "ivf_ms": 1.935,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100340",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.394875,
+      "ivf_ms": 17.301083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100340",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1245,
+      "ivf_ms": 0.17,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100340",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.810708,
+      "ivf_ms": 1.830958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100341",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.465208,
+      "ivf_ms": 15.810333,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100341",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.134333,
+      "ivf_ms": 0.170084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100341",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.40625,
+      "ivf_ms": 1.929917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100342",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.598084,
+      "ivf_ms": 16.749083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100342",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124625,
+      "ivf_ms": 0.160459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100342",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.972417,
+      "ivf_ms": 1.878791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100343",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.747541,
+      "ivf_ms": 17.732708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100343",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.135542,
+      "ivf_ms": 0.185083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100343",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.923833,
+      "ivf_ms": 1.956,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100346",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.784291,
+      "ivf_ms": 18.314667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100346",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124292,
+      "ivf_ms": 0.178458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100346",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.873583,
+      "ivf_ms": 1.867375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100347",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.281417,
+      "ivf_ms": 15.371834,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100347",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124334,
+      "ivf_ms": 0.16425,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100347",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.912667,
+      "ivf_ms": 1.805,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100348",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.879,
+      "ivf_ms": 17.100792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100348",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.13175,
+      "ivf_ms": 0.180292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100348",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.165666,
+      "ivf_ms": 1.802459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10035",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.958625,
+      "ivf_ms": 16.167875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10035",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1325,
+      "ivf_ms": 0.05275,
+      "ivf_recall": 0.3
+    },
+    {
+      "query_id": "10035",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.110625,
+      "ivf_ms": 1.375292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100351",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.734209,
+      "ivf_ms": 18.146416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100351",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123917,
+      "ivf_ms": 0.167167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100351",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.351583,
+      "ivf_ms": 1.991458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100357",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.666625,
+      "ivf_ms": 18.06275,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100357",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124208,
+      "ivf_ms": 0.176667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100357",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.071334,
+      "ivf_ms": 2.326375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100358",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.299125,
+      "ivf_ms": 18.530792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100358",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129416,
+      "ivf_ms": 0.168583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100358",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.998709,
+      "ivf_ms": 2.489875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100359",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.553625,
+      "ivf_ms": 16.972,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100359",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124458,
+      "ivf_ms": 0.173,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100359",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.873958,
+      "ivf_ms": 1.772375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10036",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.582958,
+      "ivf_ms": 16.231792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10036",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131541,
+      "ivf_ms": 0.049917,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "10036",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.266292,
+      "ivf_ms": 1.392833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100361",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.887542,
+      "ivf_ms": 17.287792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100361",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.131792,
+      "ivf_ms": 0.180291,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100361",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.967459,
+      "ivf_ms": 1.794458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100363",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.588041,
+      "ivf_ms": 16.166667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100363",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125708,
+      "ivf_ms": 0.16775,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100363",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.437667,
+      "ivf_ms": 2.027833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100365",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.662,
+      "ivf_ms": 17.605083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100365",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.127,
+      "ivf_ms": 0.174458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100365",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.966583,
+      "ivf_ms": 2.157375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10037",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.630083,
+      "ivf_ms": 16.096125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10037",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125542,
+      "ivf_ms": 0.039459,
+      "ivf_recall": 0.2
+    },
+    {
+      "query_id": "10037",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.94625,
+      "ivf_ms": 1.1,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100373",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.374875,
+      "ivf_ms": 17.186416,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100373",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.122458,
+      "ivf_ms": 0.171833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100373",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.80675,
+      "ivf_ms": 1.732709,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100377",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.452333,
+      "ivf_ms": 18.536875,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100377",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.130125,
+      "ivf_ms": 0.09475,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100377",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.310292,
+      "ivf_ms": 2.086958,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100378",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.421625,
+      "ivf_ms": 15.979791,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100378",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125375,
+      "ivf_ms": 0.149208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100378",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.842958,
+      "ivf_ms": 1.626417,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100379",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.520333,
+      "ivf_ms": 17.827208,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100379",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1275,
+      "ivf_ms": 0.136833,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100379",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.13825,
+      "ivf_ms": 1.56325,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10038",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.405833,
+      "ivf_ms": 14.558,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10038",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.1295,
+      "ivf_ms": 0.034584,
+      "ivf_recall": 0.0
+    },
+    {
+      "query_id": "10038",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.132583,
+      "ivf_ms": 1.324458,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100381",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.684042,
+      "ivf_ms": 17.8815,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100381",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125,
+      "ivf_ms": 0.06775,
+      "ivf_recall": 0.6
+    },
+    {
+      "query_id": "100381",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.335958,
+      "ivf_ms": 1.340167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100382",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.539166,
+      "ivf_ms": 17.875375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100382",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124125,
+      "ivf_ms": 0.153541,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100382",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.455,
+      "ivf_ms": 1.652459,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100383",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.732833,
+      "ivf_ms": 16.239708,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100383",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128791,
+      "ivf_ms": 0.135625,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100383",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.257542,
+      "ivf_ms": 1.805583,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100384",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.633917,
+      "ivf_ms": 16.285666,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100384",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129458,
+      "ivf_ms": 0.100417,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100384",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.350375,
+      "ivf_ms": 1.797833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100386",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 23.005375,
+      "ivf_ms": 16.245208,
+      "ivf_recall": 0.9
+    },
+    {
+      "query_id": "100386",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124833,
+      "ivf_ms": 0.070709,
+      "ivf_recall": 0.5
+    },
+    {
+      "query_id": "100386",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.8655,
+      "ivf_ms": 1.842167,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100389",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.555708,
+      "ivf_ms": 17.139542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100389",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125125,
+      "ivf_ms": 0.152083,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100389",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.292792,
+      "ivf_ms": 1.921084,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10039",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.639958,
+      "ivf_ms": 15.712875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "10039",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128625,
+      "ivf_ms": 0.050709,
+      "ivf_recall": 0.5
+    },
+    {
+      "query_id": "10039",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.208416,
+      "ivf_ms": 1.500583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100395",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.786625,
+      "ivf_ms": 16.074708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100395",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124375,
+      "ivf_ms": 0.138958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100395",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.278,
+      "ivf_ms": 1.492125,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100397",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.815291,
+      "ivf_ms": 17.732583,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100397",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124166,
+      "ivf_ms": 0.169916,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100397",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.043708,
+      "ivf_ms": 2.204708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100398",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.694209,
+      "ivf_ms": 18.737792,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100398",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.123583,
+      "ivf_ms": 0.173917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100398",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.912208,
+      "ivf_ms": 1.896875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100399",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.6905,
+      "ivf_ms": 18.762291,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100399",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125625,
+      "ivf_ms": 0.072166,
+      "ivf_recall": 0.7
+    },
+    {
+      "query_id": "100399",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.32025,
+      "ivf_ms": 1.381708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1004",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.719417,
+      "ivf_ms": 17.517833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1004",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.124833,
+      "ivf_ms": 0.170958,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "1004",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.024375,
+      "ivf_ms": 2.137708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100400",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.66425,
+      "ivf_ms": 16.763833,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100400",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.125,
+      "ivf_ms": 0.069459,
+      "ivf_recall": 0.8
+    },
+    {
+      "query_id": "100400",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.169042,
+      "ivf_ms": 1.697042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100402",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.751125,
+      "ivf_ms": 18.089542,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100402",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.129792,
+      "ivf_ms": 0.136667,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100402",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.260292,
+      "ivf_ms": 1.92375,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100409",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.760834,
+      "ivf_ms": 15.066,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100409",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.13625,
+      "ivf_ms": 0.145917,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100409",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.958041,
+      "ivf_ms": 1.556292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100411",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.7845,
+      "ivf_ms": 17.07675,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100411",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.12575,
+      "ivf_ms": 0.165708,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100411",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 2.944541,
+      "ivf_ms": 1.690875,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100412",
+      "workload": "all",
+      "eligible": 100000,
+      "exact_ms": 22.621042,
+      "ivf_ms": 15.170042,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100412",
+      "workload": "brand-narrow",
+      "eligible": 508,
+      "exact_ms": 0.128792,
+      "ivf_ms": 0.151292,
+      "ivf_recall": 1.0
+    },
+    {
+      "query_id": "100412",
+      "workload": "color-medium",
+      "eligible": 10998,
+      "exact_ms": 3.055292,
+      "ivf_ms": 1.600291,
+      "ivf_recall": 1.0
+    }
+  ]
+}

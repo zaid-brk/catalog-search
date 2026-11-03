@@ -12,12 +12,20 @@ from catalog_search.api import create_app
 from catalog_search.embeddings import Encoder, fixture_config, model_identity, normalize_label
 from catalog_search.prepare import sample_esci_products, sample_esci_queries, synthetic, write_dataset
 from catalog_search.worker import Worker
+from catalog_search.evaluate import jsonl
 
 ROOT = Path(__file__).resolve().parents[2]
 BINARY = ROOT / "build/catalog"
 
 
 class PreparationTests(unittest.TestCase):
+    def test_benchmark_jsonl_preserves_unicode_line_separators(self):
+        rows = [{"title": "Rain\u2028coat", "description": "Warm\u2029and dry\u0085outside"}, {"title": "Second product"}]
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "products.jsonl"
+            path.write_text("\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n\n", encoding="utf-8")
+            self.assertEqual(jsonl(path), rows)
+
     def test_label_normalization_matches_cpp_contract(self):
         self.assertEqual(normalize_label(" \tBLUE\r\n"), "blue")
         self.assertEqual(normalize_label("ÉTÉ"), "ÉtÉ")

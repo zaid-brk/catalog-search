@@ -19,8 +19,14 @@ Recall measures agreement with exact vector neighbors. It doesn't tell us whethe
 
 The optional `--faiss` reference uses one OpenMP thread. It builds a separate index over each filtered subset before timing. That excludes filtering/copying work that the C++ engine does during search, so these are search-kernel references rather than an end-to-end speed comparison.
 
-All methods use the same exact neighbor IDs as ground truth. Equal-score ties can be resolved differently by FAISS, so small recall differences need inspection. The FAISS comparison hasn't been run yet.
+All methods use the same exact neighbor IDs as ground truth. Equal-score ties can be resolved differently by FAISS, so small recall differences need inspection. The FAISS comparison is included in the saved real ESCI experiments below. FAISS timings run after the C++ timing sweep, so cache and thermal conditions can also differ between implementations.
 
 ## Saved run
 
 `benchmarks/example-synthetic-100k/` contains the first 100,000-vector experiment: report, gzipped raw observations, calibration, load test, and plots. It uses generated clustered 64-dimensional vectors and 60 held-out queries. Repeated timings aren't additional independent queries. These results don't establish performance on real 384-dimensional MiniLM product embeddings.
+
+## Real product runs
+
+`benchmarks/example-esci-10k/` and `benchmarks/example-esci-100k/` contain real Amazon ESCI product experiments using 384-dimensional MiniLM embeddings. Each uses 200 development queries to calibrate a dataset-specific planner factor at 32 probes, then evaluates 200 separate test queries with three timing repeats at each probe setting. The factor is frozen before test evaluation; lower-probe results do not inherit the calibration recall target. The application default is unchanged.
+
+See [real-data results](REAL_DATA_RESULTS.md) for actual filter selectivity, interpretation, limitations, and exact reproduction commands. The JSON reports record the model revision, catalog/index/binary/query hashes, hardware, build settings, and calibration choice. Raw observations are compressed CSV files; downloaded products, vectors, and indexes remain local.

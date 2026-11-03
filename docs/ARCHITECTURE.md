@@ -8,7 +8,7 @@ Exact search checks every product that meets the filters. A small heap keeps the
 
 IVF uses spherical k-means to group vectors. At query time it ranks the group centroids, visits the requested number of groups, and checks eligible products in those groups. Searching more groups usually improves recall but costs more work. Searching every group should match exact search.
 
-Brand and color each have sorted posting lists. Combined filters intersect those lists. IVF uses a per-query mask to check whether a candidate is eligible before calculating its score.
+Brand and color each have sorted posting lists. Single-field filters borrow a read-only `std::span` of an existing list; combined filters intersect the lists into a request-local vector. Unfiltered exact search walks row numbers directly. Filtered IVF uses a per-query mask to check whether a candidate is eligible before calculating its score; unfiltered IVF skips that mask.
 
 The planner compares an estimate of exact-search work with the cost of scanning centroids and selected groups. Its coefficient can be calibrated on development queries. It's a heuristic: uneven groups and memory access can make it choose the slower path. Calibration and test evaluation use different queries.
 

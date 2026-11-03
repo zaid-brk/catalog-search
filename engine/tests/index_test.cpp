@@ -66,6 +66,20 @@ TEST(Search, EmptyIndexAndInvalidRequest) {
   EXPECT_THROW(index.search(std::vector<float>{1,0,0}, {.k=1001}), std::invalid_argument);
   EXPECT_THROW(index.search(std::vector<float>{1,0,0}, {.k=10, .probes=0}), std::invalid_argument);
 }
+TEST(Search, WhitespaceFiltersMatchUnfilteredSearch) {
+  auto index = tiny();
+  const std::vector<float> query{1,0,0};
+  for (const auto strategy : {Strategy::Exact, Strategy::Ivf, Strategy::Auto}) {
+    SearchOptions options; options.strategy = strategy; options.probes = 1;
+    auto unfiltered = index.search(query, options);
+    options.filter = {" \t\r\n", "  "};
+    auto blank = index.search(query, options);
+    EXPECT_EQ(blank.hits, unfiltered.hits);
+    EXPECT_EQ(blank.eligible, index.size());
+    EXPECT_EQ(blank.comparisons, unfiltered.comparisons);
+    EXPECT_EQ(blank.strategy, unfiltered.strategy);
+  }
+}
 TEST(Search, ProbingEveryClusterMatchesExactWithFilters) {
   auto index = random_index(); std::mt19937 rng(91); std::normal_distribution<float> normal;
   for (int i = 0; i < 35; ++i) {
@@ -90,6 +104,35 @@ TEST(Search, ParallelSearchMatchesSerial) {
     for (int i = 0; i < 50; ++i) if (index.search(q).hits != expected) valid = false;
   });
   for (auto& t : threads) t.join(); EXPECT_TRUE(valid);
+}
+TEST(Search, BorrowedPostingsAndOwnedIntersectionsRemainIndependent) {
+  auto index = random_index(1000);
+  const std::vector<float> query(12, 1);
+  std::vector<SearchOptions> requests;
+  for (const auto strategy : {Strategy::Exact, Strategy::Ivf, Strategy::Auto}) {
+    for (const auto& filter : std::vector<Filter>{{}, {"common", ""}, {"", "blue"},
+                                               {"common", "blue"}, {"rare", "blue"},
+                                               {"missing", ""}}) {
+      SearchOptions options; options.strategy = strategy; options.probes = 3; options.filter = filter;
+      requests.push_back(options);
+    }
+  }
+  std::vector<SearchResult> expected;
+  for (const auto& request : requests) expected.push_back(index.search(query, request));
+  std::atomic<bool> valid{true};
+  std::vector<std::thread> threads;
+  for (std::size_t t = 0; t < 8; ++t) threads.emplace_back([&,t] {
+    for (std::size_t i = 0; i < 100; ++i) {
+      auto position = (i+t) % requests.size();
+      auto actual = index.search(query, requests[position]);
+      const auto& reference = expected[position];
+      if (actual.hits != reference.hits || actual.eligible != reference.eligible ||
+          actual.comparisons != reference.comparisons || actual.strategy != reference.strategy)
+        valid = false;
+    }
+  });
+  for (auto& thread : threads) thread.join();
+  EXPECT_TRUE(valid);
 }
 TEST(Persistence, RoundTripAndDeterminism) {
   auto index = random_index(); auto path = temp_file(".idx"); index.save(path);

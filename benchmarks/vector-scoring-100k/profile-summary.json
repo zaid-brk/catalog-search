@@ -1,0 +1,13 @@
+{
+  "tool": "macOS sample",
+  "duration_seconds": 8,
+  "sampling_interval_ms": 1,
+  "workload": "100000 real products; exact search; one worker; cyclic first 20 development queries; k=10",
+  "worker_samples": 6884,
+  "candidate_scorer_top_of_stack_samples": 6870,
+  "candidate_scorer_fraction": 0.9979662986635677,
+  "baseline_loadtest_binary_sha256": "f9c9f49e3c8debf8d79c9a08204871917266a9737e7006543eadf8cb810c9a37",
+  "baseline_revision": "eb08210a0acad7544206461af94d1a0fefa1d017",
+  "interpretation": "The sampled scorer contains the inlined dot product and heap update. Disassembly of sampled offsets showed packed multiplications followed by serial scalar additions. The main thread was waiting for the worker and is excluded from this fraction.",
+  "scope": "Sampling evidence, not an exact fraction of CPU cycles spent in dot(). Raw machine-specific sample output stays local."
+}

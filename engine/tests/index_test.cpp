@@ -37,6 +37,39 @@ TEST(Math, NormalizesAndRejectsInvalid) {
   EXPECT_THROW(normalized(std::vector<float>{INFINITY,1}), std::invalid_argument);
   EXPECT_THROW(dot(std::vector<float>{1}, std::vector<float>{1,2}), std::invalid_argument);
 }
+TEST(Math, DotMatchesDoubleOracleAcrossTailsAndUnalignedSpans) {
+  std::mt19937 rng(2026);
+  std::uniform_real_distribution<float> random(-1, 1);
+  for (const std::size_t dimensions : {0, 1, 2, 3, 4, 5, 7, 8, 9, 15, 16, 17,
+                                      63, 64, 65, 127, 128, 129, 383, 384, 385,
+                                      767, 768, 769, 4095, 4096}) {
+    std::vector<float> a(dimensions + 1), b(dimensions + 2);
+    const float scale = 1 / std::sqrt(static_cast<float>(std::max<std::size_t>(1, dimensions)));
+    for (auto& value : a) value = random(rng) * scale;
+    for (auto& value : b) value = random(rng) * scale;
+    const auto left = std::span<const float>(a).subspan(1, dimensions);
+    const auto right = std::span<const float>(b).subspan(2, dimensions);
+    double expected = 0;
+    for (std::size_t i = 0; i < dimensions; ++i)
+      expected += static_cast<double>(left[i]) * right[i];
+    EXPECT_NEAR(dot(left, right), expected, 2e-6);
+  }
+}
+TEST(Search, HighDimensionalTiesRemainDeterministic) {
+  std::vector<Product> products;
+  std::vector<float> vectors;
+  const std::vector<float> query(385, 0.25F);
+  for (int i = 0; i < 20; ++i) {
+    products.push_back({std::to_string(i), "Identical product", "", "brand", "blue"});
+    vectors.insert(vectors.end(), query.begin(), query.end());
+  }
+  auto index = Index::build(std::move(products), std::move(vectors), query.size(),
+                            "test", "ties", {.clusters=4, .iterations=2});
+  const auto exact = index.search(query, {.k=10, .strategy=Strategy::Exact});
+  ASSERT_EQ(exact.hits.size(), 10);
+  for (std::size_t i = 0; i < exact.hits.size(); ++i) EXPECT_EQ(exact.hits[i].row, i);
+  EXPECT_EQ(index.search(query, {.k=10, .probes=4, .strategy=Strategy::Ivf}).hits, exact.hits);
+}
 TEST(Build, ValidatesShapeAndIdentity) {
   EXPECT_THROW(Index::build({{"a","","","",""}}, {1,2}, 3, "test", ""), std::invalid_argument);
   EXPECT_THROW(Index::build({}, {}, 0, "test", ""), std::invalid_argument);

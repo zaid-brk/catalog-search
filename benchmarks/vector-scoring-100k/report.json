@@ -1,0 +1,281 @@
+{
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "cpu": "Apple M2 Pro",
+    "logical_cpus": 10,
+    "python": "3.11.7",
+    "numpy": "2.4.6",
+    "git_revision": "eb08210a0acad7544206461af94d1a0fefa1d017",
+    "binary_sha256": "cca613a6e5d7a8360f849b94bd29c071603088b75fe8ad6998a62264ac6e98ea",
+    "index_sha256": "d02edca39498555b2ae4fd672d9f6dbe5374cd56bd9715babdfbeb852d8cad28",
+    "index_bytes": 269937868,
+    "dataset_manifest": {
+      "format_version": 1,
+      "encoder": {
+        "encoder": "minilm",
+        "name": "sentence-transformers/all-MiniLM-L6-v2",
+        "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+        "dimensions": 384,
+        "max_seq_length": 256,
+        "text_recipe": "title-description-4096-v1",
+        "normalization": "l2"
+      },
+      "model_id": "minilm:74f1bf102bcceff5b2075eb1",
+      "provenance": "Amazon ESCI US products; MiniLM embeddings; see manifest and dataset source",
+      "products": 100000,
+      "dimensions": 384,
+      "catalog_sha256": "8a580e192aa710de0e453d7840bb5667a116eb71c809a9465a434ff8cf981ac5",
+      "python": "3.11.7",
+      "numpy": "2.4.6",
+      "report": {
+        "source_rows": 1814924,
+        "eligible_unique_products": 1215854,
+        "selected_products": 100000,
+        "missing_brand": 5870,
+        "missing_color": 33322,
+        "sampling": "lowest blake2b(seed:product_id) hashes",
+        "seed": 42,
+        "query_dev_count": 200,
+        "query_test_count": 200
+      }
+    },
+    "timing_scope": "C++ retrieval_ms; worker transport/encoding excluded; one query at a time, one engine thread",
+    "memory_note": "vector_bytes is vector storage only; not process RSS",
+    "relevance_note": "Recall compares vector neighbors, not shopper relevance. Synthetic data cannot establish real catalog performance.",
+    "baseline_binary_sha256": "7f3097c4b952febe23f6fe47a9e27299c5359e36631d891acf79c7aeef702651",
+    "comparison_script_sha256": "3237bdac13428fbfc666591441880301557fec868d9f0d1546e7fd83de01eda2",
+    "candidate_index_source_sha256": "a891fb8cd9a68da569513e433501d9d4100f9b5777d046d1a8b20e7d9b90aa76",
+    "query_files_sha256": {
+      "dev": "cde812d3ddbb4810f76430593a93c4b596aa7d8747e4883ef968e18b43d980a7",
+      "test": "09aa7c38b6883d7dd2134a5b24fa204a1212e6eef3971e8c8ba1ba2bdecd3b8e"
+    }
+  },
+  "index_info": {
+    "products": 100000,
+    "dimensions": 384,
+    "clusters": 64,
+    "model_id": "minilm:74f1bf102bcceff5b2075eb1",
+    "provenance": "Amazon ESCI US products; MiniLM embeddings; see manifest and dataset source",
+    "vector_bytes": 153600000,
+    "exact_cost_factor": 8.0
+  },
+  "settings": {
+    "queries": 200,
+    "repeats": 3,
+    "probes": 32,
+    "k": 10,
+    "seed": 42,
+    "schedule": "shuffled methods, randomly ordered baseline/candidate pairs"
+  },
+  "workloads": [
+    {
+      "label": "all",
+      "filters": {},
+      "eligible": 100000
+    },
+    {
+      "label": "brand-narrow",
+      "filters": {
+        "brand": "nike"
+      },
+      "eligible": 508
+    },
+    {
+      "label": "color-medium",
+      "filters": {
+        "color": "black"
+      },
+      "eligible": 10998
+    }
+  ],
+  "verification": {
+    "query_filter_cases": 600,
+    "cross_version_hit_set_changes": 0,
+    "cross_version_order_changes": 0,
+    "maximum_shared_hit_score_delta": 8.344650268554688e-07,
+    "full_probe_cases_per_version": 600
+  },
+  "summary": [
+    {
+      "workload": "all",
+      "method": "auto",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 17.3684585,
+      "p95_ms": 19.39215805,
+      "mean_recall_at_10": 0.9915
+    },
+    {
+      "workload": "all",
+      "method": "auto",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 11.3305,
+      "p95_ms": 12.7164066,
+      "mean_recall_at_10": 0.9915
+    },
+    {
+      "workload": "all",
+      "method": "exact",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 21.9349585,
+      "p95_ms": 22.9688083,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "all",
+      "method": "exact",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 7.5562705,
+      "p95_ms": 8.04942565,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "all",
+      "method": "ivf",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 17.3723545,
+      "p95_ms": 19.397031849999998,
+      "mean_recall_at_10": 0.9915
+    },
+    {
+      "workload": "all",
+      "method": "ivf",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 11.426312500000002,
+      "p95_ms": 12.618893749999998,
+      "mean_recall_at_10": 0.9915
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "auto",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.12235399999999999,
+      "p95_ms": 0.14089374999999998,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "auto",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.0455,
+      "p95_ms": 0.054625,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "exact",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.12225,
+      "p95_ms": 0.14100834999999998,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "exact",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.0455,
+      "p95_ms": 0.05509024999999999,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "ivf",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.134167,
+      "p95_ms": 0.17385179999999997,
+      "mean_recall_at_10": 0.8005
+    },
+    {
+      "workload": "brand-narrow",
+      "method": "ivf",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.064542,
+      "p95_ms": 0.07992434999999999,
+      "mean_recall_at_10": 0.8005
+    },
+    {
+      "workload": "color-medium",
+      "method": "auto",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 1.6544585,
+      "p95_ms": 2.164314899999999,
+      "mean_recall_at_10": 0.981
+    },
+    {
+      "workload": "color-medium",
+      "method": "auto",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.758771,
+      "p95_ms": 1.2519669999999998,
+      "mean_recall_at_10": 0.981
+    },
+    {
+      "workload": "color-medium",
+      "method": "exact",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 3.1744795,
+      "p95_ms": 3.6926270499999996,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "color-medium",
+      "method": "exact",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 1.7292705,
+      "p95_ms": 2.23994105,
+      "mean_recall_at_10": 1.0
+    },
+    {
+      "workload": "color-medium",
+      "method": "ivf",
+      "version": "baseline",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 1.6807915,
+      "p95_ms": 2.22441875,
+      "mean_recall_at_10": 0.981
+    },
+    {
+      "workload": "color-medium",
+      "method": "ivf",
+      "version": "candidate",
+      "observations": 600,
+      "query_count": 200,
+      "p50_ms": 0.777479,
+      "p95_ms": 1.2677267499999998,
+      "mean_recall_at_10": 0.981
+    }
+  ]
+}

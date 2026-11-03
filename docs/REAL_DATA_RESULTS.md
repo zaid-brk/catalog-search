@@ -2,6 +2,8 @@
 
 These runs use Amazon ESCI US products and 384-dimensional MiniLM embeddings, rather than the generated vectors in the original experiment. They measure C++ retrieval on one Apple M2 Pro, not a deployed service.
 
+These are baseline measurements from before the [profile-guided scoring optimization](VECTOR_SCORING.md); its paired experiment records the subsequent improvement.
+
 ## Protocol
 
 - Sample products deterministically with seed 42. Use `sentence-transformers/all-MiniLM-L6-v2` revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41`, normalized embeddings, and the recorded title/description recipe.

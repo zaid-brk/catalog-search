@@ -1,6 +1,6 @@
 # How the engine works
 
-The catalog is stored as a flat array of normalized float vectors, with product metadata alongside it. Similarity is a dot product. Each product has an external ID and an internal row number used by the indexes.
+The catalog is stored as a flat array of normalized float vectors, with product metadata alongside it. Similarity is a dot product accumulated through four independent partial sums, with a scalar tail for other dimensions. This permits compiler SIMD optimization; score rounding can differ from a serial sum. Each product has an external ID and an internal row number used by the indexes.
 
 ## Search
 

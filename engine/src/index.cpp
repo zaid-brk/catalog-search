@@ -88,8 +88,22 @@ template <class Map> std::vector<std::string> keys(const Map& map) {
 
 float dot(std::span<const float> a, std::span<const float> b) {
   if (a.size() != b.size()) throw std::invalid_argument("dimension mismatch");
-  float total = 0;
-  for (std::size_t i = 0; i < a.size(); ++i) total += a[i] * b[i];
+  // Independent sums break the serial reduction dependency and let ordinary
+  // optimizing compilers use SIMD without architecture-specific instructions
+  // or global fast-math. Summation order can change the last few score bits.
+  std::array<float, 4> sums{};
+  std::size_t i = 0;
+#if defined(__clang__)
+#pragma clang loop vectorize(disable) interleave(disable)
+#endif
+  for (; a.size() - i >= sums.size(); i += sums.size()) {
+    sums[0] += a[i] * b[i];
+    sums[1] += a[i + 1] * b[i + 1];
+    sums[2] += a[i + 2] * b[i + 2];
+    sums[3] += a[i + 3] * b[i + 3];
+  }
+  float total = (sums[0] + sums[1]) + (sums[2] + sums[3]);
+  for (; i < a.size(); ++i) total += a[i] * b[i];
   return total;
 }
 

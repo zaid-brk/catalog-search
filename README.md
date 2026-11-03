@@ -60,6 +60,8 @@ build/catalog build --input data/synthetic-100k/catalog.jsonl --output data/synt
 
 Saved runs include the original [synthetic experiment](benchmarks/example-synthetic-100k/REPORT.md) and real Amazon ESCI catalogs with [10,000](benchmarks/example-esci-10k/REPORT.md) and [100,000](benchmarks/example-esci-100k/REPORT.md) products. The [real-data results](docs/REAL_DATA_RESULTS.md) explain development-only planner calibration, held-out recall/latency, FAISS references, and reproduction commands. Retrieval timings exclude text encoding and HTTP; recall measures agreement with exact vector neighbors, not shopper relevance.
 
+A [profile-guided scoring optimization](docs/VECTOR_SCORING.md) includes paired before/after measurements on those real catalogs. On the measured 100k workload, unfiltered exact retrieval improved from 21.94 ms to 7.56 ms median with the same returned IDs.
+
 There's also a small C++ allocation benchmark:
 
 ```sh

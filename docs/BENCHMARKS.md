@@ -30,3 +30,9 @@ All methods use the same exact neighbor IDs as ground truth. Equal-score ties ca
 `benchmarks/example-esci-10k/` and `benchmarks/example-esci-100k/` contain real Amazon ESCI product experiments using 384-dimensional MiniLM embeddings. Each uses 200 development queries to calibrate a dataset-specific planner factor at 32 probes, then evaluates 200 separate test queries with three timing repeats at each probe setting. The factor is frozen before test evaluation; lower-probe results do not inherit the calibration recall target. The application default is unchanged.
 
 See [real-data results](REAL_DATA_RESULTS.md) for actual filter selectivity, interpretation, limitations, and exact reproduction commands. The JSON reports record the model revision, catalog/index/binary/query hashes, hardware, build settings, and calibration choice. Raw observations are compressed CSV files; downloaded products, vectors, and indexes remain local.
+
+## Paired scoring comparison
+
+`benchmarks/compare_retrieval.py` compares two binaries using one fixed index, shuffled methods, and randomized before/after pairs. The saved `benchmarks/vector-scoring-10k/` and `benchmarks/vector-scoring-100k/` runs isolate the dot-product optimization at k=10, 32 probes, and the existing factor-8 planner setting. Reports record p50/p95, recall against baseline exact neighbors, cross-version hit/score checks, and full-probe equality.
+
+See [profiling and results](VECTOR_SCORING.md) for the measured improvement, numerical rounding limits, and the planner limitation exposed at 100k. The earlier synthetic/real-data reports are preserved as historical experiments from their recorded engine revisions.

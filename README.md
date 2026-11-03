@@ -60,4 +60,22 @@ build/catalog build --input data/synthetic-100k/catalog.jsonl --output data/synt
 
 The [saved experiment](benchmarks/example-synthetic-100k/REPORT.md) uses synthetic vectors. Those results don't establish performance on real product embeddings. Real catalog evaluation and planner tuning are still in progress.
 
+There's also a small C++ allocation benchmark:
+
+```sh
+cmake --build build --target catalog-allocation-bench
+build/catalog-allocation-bench data/synthetic-100k/catalog.csidx 200
+```
+
+Search now uses `std::span` to read a single filter's existing posting list without copying it. Unfiltered searches skip the eligibility list entirely, and unfiltered IVF also skips the eligibility mask. Combined filters still build a request-local intersection so concurrent searches don't share mutable buffers.
+
+On the 100,000-vector, 64-dimension synthetic index above, using the same benchmark against `fae97e9` and the updated engine:
+
+| Unfiltered search | Requested bytes/query before | After | Allocations before → after |
+| --- | ---: | ---: | ---: |
+| Exact | 400,752 | 752 | 12 → 11 |
+| IVF | 501,264 | 1,264 | 14 → 12 |
+
+These are C++ `new` allocation requests during search, averaged over 200 repetitions of one fixed query in a Release build on macOS with Apple Clang. They exclude index loading and allocator overhead; they aren't peak memory usage or a general latency result. The executable also measures single-brand and single-color filters.
+
 More on the [implementation](docs/ARCHITECTURE.md) and [benchmark measurements](docs/BENCHMARKS.md).

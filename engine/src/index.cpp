@@ -200,21 +200,18 @@ void Index::build_metadata() {
   }
 }
 
-std::vector<std::uint32_t> Index::eligible_rows(const Filter& filter) const {
-  auto brand = normalize_label(filter.brand), color = normalize_label(filter.color);
-  if (brand.empty() && color.empty()) {
-    std::vector<std::uint32_t> rows(size()); std::iota(rows.begin(), rows.end(), 0); return rows;
-  }
+std::span<const std::uint32_t> Index::filtered_rows(
+    const Filter& filter, std::vector<std::uint32_t>& intersection) const {
   const std::vector<std::uint32_t>* b = nullptr;
   const std::vector<std::uint32_t>* c = nullptr;
-  if (!brand.empty()) { auto it = brands_.find(brand); if (it == brands_.end()) return {}; b = &it->second; }
-  if (!color.empty()) { auto it = colors_.find(color); if (it == colors_.end()) return {}; c = &it->second; }
+  if (!filter.brand.empty()) { auto it = brands_.find(filter.brand); if (it == brands_.end()) return {}; b = &it->second; }
+  if (!filter.color.empty()) { auto it = colors_.find(filter.color); if (it == colors_.end()) return {}; c = &it->second; }
+  if (!b && !c) return {};
   if (!b) return *c;
   if (!c) return *b;
-  std::vector<std::uint32_t> result;
-  result.reserve(std::min(b->size(), c->size()));
-  std::set_intersection(b->begin(), b->end(), c->begin(), c->end(), std::back_inserter(result));
-  return result;
+  intersection.reserve(std::min(b->size(), c->size()));
+  std::set_intersection(b->begin(), b->end(), c->begin(), c->end(), std::back_inserter(intersection));
+  return intersection;
 }
 
 SearchResult Index::search(std::span<const float> query, const SearchOptions& options) const {
@@ -224,16 +221,22 @@ SearchResult Index::search(std::span<const float> query, const SearchOptions& op
     throw std::invalid_argument("k must be 1..1000 and probes must be positive");
   auto q = normalized(query);
   SearchResult out;
-  auto eligible = eligible_rows(options.filter); out.eligible = eligible.size();
+  const Filter filter{normalize_label(options.filter.brand), normalize_label(options.filter.color)};
+  const bool filtered = !filter.brand.empty() || !filter.color.empty();
+  // Keep any owned intersection alive for the entire search. Single-field
+  // filters borrow existing posting lists; unfiltered searches need no row list.
+  std::vector<std::uint32_t> intersection;
+  const auto eligible = filtered ? filtered_rows(filter, intersection) : std::span<const std::uint32_t>{};
+  out.eligible = filtered ? eligible.size() : size();
   std::size_t probes = std::min(options.probes, clusters());
   // Estimate dot products, including centroid comparisons. Metadata/list overhead
   // is intentionally approximate; benchmarks calibrate the factor on dev queries.
   double ivf_work = static_cast<double>(clusters()) +
       static_cast<double>(size()) * static_cast<double>(probes) / std::max<std::size_t>(1, clusters());
   bool exact = options.strategy == Strategy::Exact || clusters() == 0 ||
-      (options.strategy == Strategy::Auto && static_cast<double>(eligible.size()) * exact_cost_factor_ <= ivf_work);
+      (options.strategy == Strategy::Auto && static_cast<double>(out.eligible) * exact_cost_factor_ <= ivf_work);
   out.strategy = exact ? "exact" : "ivf";
-  std::size_t k = std::min(options.k, eligible.size());
+  std::size_t k = std::min(options.k, out.eligible);
   std::priority_queue<Hit, std::vector<Hit>, Better> heap;
   auto consider = [&](std::uint32_t i) {
     float s = dot(q, std::span(vectors_).subspan(std::size_t(i) * dimensions_, dimensions_));
@@ -243,18 +246,24 @@ SearchResult Index::search(std::span<const float> query, const SearchOptions& op
     else if (better(h, heap.top())) { heap.pop(); heap.push(h); }
   };
   if (k) {
-    if (exact) for (auto i : eligible) consider(i);
+    if (exact) {
+      if (filtered) for (auto i : eligible) consider(i);
+      else for (std::size_t i = 0; i < size(); ++i) consider(static_cast<std::uint32_t>(i));
+    }
     else {
       std::vector<Hit> ranked; ranked.reserve(clusters());
       for (std::size_t c = 0; c < clusters(); ++c)
         ranked.push_back({static_cast<std::uint32_t>(c), dot(q, std::span(centroids_).subspan(c * dimensions_, dimensions_))});
       std::partial_sort(ranked.begin(), ranked.begin() + static_cast<std::ptrdiff_t>(probes), ranked.end(), better);
-      // A byte mask allows O(1) eligibility checks; this allocation is included in timing.
-      std::vector<std::uint8_t> mask(size(), 0);
-      for (auto i : eligible) mask[i] = 1;
+      // Only filtered queries need a mask. Its storage remains request-local.
+      std::vector<std::uint8_t> mask;
+      if (filtered) {
+        mask.resize(size(), 0);
+        for (auto i : eligible) mask[i] = 1;
+      }
       for (std::size_t c = 0; c < probes; ++c) {
         ++out.clusters_searched;
-        for (auto i : lists_[ranked[c].row]) if (mask[i]) consider(i);
+        for (auto i : lists_[ranked[c].row]) if (!filtered || mask[i]) consider(i);
       }
     }
   }

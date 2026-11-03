@@ -76,7 +76,9 @@ class Index {
 
  private:
   void build_metadata();
-  std::vector<std::uint32_t> eligible_rows(const Filter&) const;
+  // The returned view borrows immutable index data or the caller's intersection.
+  std::span<const std::uint32_t> filtered_rows(
+      const Filter&, std::vector<std::uint32_t>& intersection) const;
   std::vector<Product> products_;
   std::vector<float> vectors_, centroids_;
   std::vector<std::vector<std::uint32_t>> lists_;

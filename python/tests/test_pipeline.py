@@ -11,11 +11,37 @@ import numpy as np
 from catalog_search.api import create_app
 from catalog_search.embeddings import Encoder, fixture_config, model_identity, normalize_label
 from catalog_search.prepare import sample_esci_products, sample_esci_queries, synthetic, write_dataset
+from catalog_search.ranking import TitleIndex, fuse_rankings
 from catalog_search.worker import Worker
 from catalog_search.evaluate import jsonl
 
 ROOT = Path(__file__).resolve().parents[2]
 BINARY = ROOT / "build/catalog"
+
+
+class RankingTests(unittest.TestCase):
+    def test_title_search_ranks_rare_terms_and_filters_before_limiting(self):
+        titles = TitleIndex([
+            {"id": "a", "title": "Mouse MX-3S", "brand": "A", "color": "Blue"},
+            {"id": "b", "title": "Wireless Mouse", "brand": "B", "color": "Blue"},
+            {"id": "c", "title": "Wireless Mouse", "brand": "B", "color": "Red"},
+        ])
+        hits, eligible = titles.search("mouse MX-3s", 1)
+        self.assertEqual([hit["id"] for hit in hits], ["a"])
+        self.assertEqual(eligible, 3)
+        hits, eligible = titles.search("mouse MX-3s", 1, brand=" B ", color="BLUE")
+        self.assertEqual([hit["id"] for hit in hits], ["b"])
+        self.assertEqual(eligible, 1)
+        self.assertEqual(titles.search("unknown", 10), ([], 3))
+
+    def test_fusion_rewards_agreement_deduplicates_and_preserves_single_rank(self):
+        keyword = [{"id": "a", "score": 100}, {"id": "both", "score": 1}]
+        vector = [{"id": "b", "score": 0.9}, {"id": "both", "score": 0.1}]
+        hits = fuse_rankings(keyword, vector, 2)
+        self.assertEqual([hit["id"] for hit in hits], ["both", "a"])
+        self.assertAlmostEqual(hits[0]["score"], 2 / 62)
+        self.assertEqual([hit["id"] for hit in fuse_rankings([], vector, 2)], ["b", "both"])
+        self.assertEqual(keyword[0]["score"], 100)
 
 
 class PreparationTests(unittest.TestCase):
@@ -130,6 +156,21 @@ class GatewayTests(unittest.TestCase):
                         self.assertIn("hiking jacket",data["hits"][0]["title"])
                         for hit in data["hits"]: self.assertEqual(hit["brand"],"trailworks"); self.assertEqual(hit["color"],"blue")
                         self.assertGreaterEqual(data["total_ms"],data["embedding_ms"])
+                        self.assertEqual(data["mode"], "semantic")
+                        for mode in ("keyword", "hybrid"):
+                            response = await client.post("/api/search", json={
+                                "query": "hiking jacket", "mode": mode, "k": 1, "brand": " TRAILWORKS ", "color": "BLUE",
+                            })
+                            self.assertEqual(response.status_code, 200)
+                            ranked = response.json()
+                            self.assertEqual(ranked["mode"], mode)
+                            self.assertEqual(ranked["eligible"], data["eligible"])
+                            self.assertEqual(len(ranked["hits"]), 1)
+                            self.assertEqual(ranked["hits"][0]["id"], data["hits"][0]["id"])
+                        keyword = await client.post("/api/search", json={"query": "the", "mode": "keyword"})
+                        self.assertEqual(keyword.status_code, 200)
+                        self.assertEqual(keyword.json()["embedding_ms"], 0)
+                        self.assertIsNone(keyword.json()["strategy"])
                         for payload in ({"query":" "},{"query":"hi","k":True},{"query":"hi","strategy":"bogus"},{"query":"hi","probes":0},{"query":"hi","unknown":1}):
                             self.assertEqual((await client.post("/api/search",json=payload)).status_code,422)
                         empty=await client.post("/api/search",json={"query":"jacket","brand":"missing"})

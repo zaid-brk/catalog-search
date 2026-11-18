@@ -22,8 +22,10 @@ The index stays unchanged while serving requests. Each search has its own heap a
 
 ## App
 
-The Python gateway turns text into an embedding and sends the vector and filters to the C++ HTTP API. Both sides check the model fingerprint to avoid mixing incompatible embeddings. Boost.Beast handles HTTP and Boost.JSON handles JSON. The server has a fixed worker pool, bounded queued work, and request deadlines.
+For Semantic search, the Python gateway turns text into an embedding and sends the vector and filters to the C++ HTTP API. Both sides check the model fingerprint to avoid mixing incompatible embeddings. Boost.Beast handles HTTP and Boost.JSON handles JSON. The server has a fixed worker pool, bounded queued work, and request deadlines.
 
-The frontend shows results and separates encoding time from C++ retrieval time. A persistent CLI worker runs the same search handler for benchmarks without HTTP or model inference.
+The gateway also builds an in-memory BM25 title index from the prepared dataset's `products.jsonl`. Keyword search uses that index without encoding the query. Hybrid search applies the same filters to both paths and combines their top candidates by product ID using reciprocal rank fusion. The gateway reports keyword retrieval and fusion timings alongside encoding and C++ retrieval. See the [hybrid search benchmark](HYBRID_SEARCH.md) for ranking settings and measured results.
+
+A persistent CLI worker runs the vector search handler for benchmarks without HTTP or model inference.
 
 This is a single-machine CPU engine. It doesn't include concurrent writes, replication, natural-language filter parsing, or a trained custom embedding model.

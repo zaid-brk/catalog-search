@@ -1,8 +1,8 @@
 import "./style.css";
 
-interface Info { products: number; dimensions: number; clusters: number; brands: string[]; semantic: boolean; provenance: string; }
+interface Info { products: number; dimensions: number; clusters: number; brands: string[]; semantic: boolean; provenance: string; keyword_available: boolean; }
 interface Hit { id: string; title: string; description: string; brand: string; color: string; score: number; }
-interface Result { hits: Hit[]; strategy: string; eligible: number; comparisons: number; clusters_searched: number; retrieval_ms: number; embedding_ms: number; total_ms: number; semantic: boolean; }
+interface Result { hits: Hit[]; mode: "keyword" | "semantic" | "hybrid"; strategy: "exact" | "ivf" | null; eligible: number; comparisons: number; clusters_searched: number; retrieval_ms: number; embedding_ms: number; keyword_ms: number; fusion_ms: number; total_ms: number; semantic: boolean; }
 const root = document.querySelector<HTMLElement>("#app")!;
 root.innerHTML = `
   <header><h1><a class="wordmark" href="/">Catalog Search</a></h1><span id="catalog-count">Loading…</span></header>
@@ -10,13 +10,16 @@ root.innerHTML = `
   <form id="search-form">
     <label for="query">Search products</label>
     <div class="search-line"><input id="query" name="query" type="search" maxlength="512" required autocomplete="off"><button id="submit" type="submit" disabled>Search</button></div>
-    <div class="filters"><label for="brand">Brand (optional)</label><input id="brand" type="search" list="brand-options" placeholder="Search brands" maxlength="512" autocomplete="off" disabled><datalist id="brand-options"></datalist></div>
-    <details><summary>Search settings</summary><div class="settings"><div><label for="strategy">Search method</label><select id="strategy"><option value="auto">Automatic</option><option value="exact">Exact</option><option value="ivf">IVF</option></select></div><div><label for="probes">Clusters to search</label><input id="probes" type="number" min="1" value="8" max="4096"></div></div></details>
+    <div class="settings">
+      <div><label for="search-mode">Search mode</label><select id="search-mode" disabled><option value="semantic">Semantic</option><option value="keyword">Keyword</option><option value="hybrid">Hybrid</option></select></div>
+      <div><label for="brand">Brand (optional)</label><input id="brand" type="search" list="brand-options" placeholder="Search brands" maxlength="512" autocomplete="off" disabled><datalist id="brand-options"></datalist></div>
+    </div>
+    <details id="vector-settings"><summary>Vector search settings</summary><div class="settings"><div><label for="strategy">Vector search method</label><select id="strategy"><option value="auto">Automatic</option><option value="exact">Exact</option><option value="ivf">IVF</option></select></div><div><label for="probes">Clusters to search</label><input id="probes" type="number" min="1" value="8" max="4096"></div></div></details>
   </form>
   <div id="error" role="alert" hidden></div>
   <div class="results-layout">
     <section id="search-results" aria-labelledby="results-title" hidden><div class="section-title"><h2 id="results-title">Results</h2><span id="result-count"></span></div><div id="results" aria-live="polite"></div></section>
-    <aside class="search-stats" aria-labelledby="stats-title"><h2 id="stats-title">Search details</h2><dl><div><dt>Method</dt><dd id="method">—</dd></div><div><dt>Eligible products</dt><dd id="eligible">—</dd></div><div><dt>Products compared</dt><dd id="comparisons">—</dd></div><div><dt>Groups searched</dt><dd id="groups">—</dd></div><div><dt>C++ retrieval</dt><dd id="retrieval">—</dd></div><div><dt>Text encoding</dt><dd id="encoding">—</dd></div><div><dt>Server total</dt><dd id="total">—</dd></div></dl></aside>
+    <aside class="search-stats" aria-labelledby="stats-title"><h2 id="stats-title">Search details</h2><dl><div><dt>Method</dt><dd id="method">-</dd></div><div><dt>Eligible products</dt><dd id="eligible">-</dd></div><div><dt>Vectors compared</dt><dd id="comparisons">-</dd></div><div><dt>Groups searched</dt><dd id="groups">-</dd></div><div><dt>C++ retrieval</dt><dd id="retrieval">-</dd></div><div><dt>Text encoding</dt><dd id="encoding">-</dd></div><div id="keyword-stat" hidden><dt>Keyword retrieval</dt><dd id="keyword-time">-</dd></div><div id="fusion-stat" hidden><dt>Rank fusion</dt><dd id="fusion-time">-</dd></div><div><dt>Server total</dt><dd id="total">-</dd></div></dl></aside>
   </div>`;
 
 function element<T extends HTMLElement>(id: string): T { return document.getElementById(id) as T; }
@@ -25,6 +28,15 @@ const submit = element<HTMLButtonElement>("submit");
 const error = element<HTMLDivElement>("error");
 const results = element<HTMLDivElement>("results");
 const brand = element<HTMLInputElement>("brand");
+const mode = element<HTMLSelectElement>("search-mode");
+const strategy = element<HTMLSelectElement>("strategy");
+const probes = element<HTMLInputElement>("probes");
+mode.addEventListener("change", () => {
+  const keywordOnly = mode.value === "keyword";
+  element("vector-settings").hidden = keywordOnly;
+  strategy.disabled = keywordOnly;
+  probes.disabled = keywordOnly;
+});
 const brands = new Set<string>();
 const selectedBrand = () => brand.value.trim().replace(/[A-Z]/g, character => character.toLowerCase());
 brand.addEventListener("input", () => {
@@ -33,6 +45,8 @@ brand.addEventListener("input", () => {
 });
 const number = (value: number) => value.toLocaleString();
 const milliseconds = (value: number) => `${value.toFixed(value < 1 ? 3 : 1)} ms`;
+const modeLabels = { keyword: "Keyword", semantic: "Semantic", hybrid: "Hybrid" };
+const scoreLabels = { keyword: "BM25 score", semantic: "Cosine similarity", hybrid: "Rank fusion score" };
 
 function showError(message: string) { error.textContent = message; error.hidden = false; }
 async function fetchJson<T>(url: string, options?: RequestInit): Promise<T> {
@@ -51,7 +65,10 @@ function render(result: Result) {
   if (!result.hits.length) {
     const empty = document.createElement("div"); empty.className = "empty";
     const heading = document.createElement("h3"); heading.textContent = "No results found.";
-    const text = document.createElement("p"); text.textContent = result.eligible ? "Try exact search or search more groups." : "Try clearing the brand filter.";
+    const text = document.createElement("p");
+    text.textContent = !result.eligible ? "Try clearing the brand filter."
+      : result.mode === "keyword" ? "Try different keywords or switch search mode."
+      : "Try exact search or search more groups.";
     empty.append(heading, text); results.append(empty);
   }
   for (const [i, hit] of result.hits.entries()) {
@@ -61,18 +78,36 @@ function render(result: Result) {
     const title = document.createElement("h3"); title.textContent = hit.title;
     const meta = document.createElement("p"); meta.className = "product-meta"; meta.textContent = [hit.brand, hit.color].filter(Boolean).join(" · ");
     const description = document.createElement("p"); description.className = "description"; description.textContent = hit.description;
-    const score = document.createElement("span"); score.className = "score"; score.textContent = hit.score.toFixed(3); score.title = "Cosine similarity, not a confidence or accuracy percentage"; score.setAttribute("aria-label", `Cosine similarity ${hit.score.toFixed(3)}`);
+    const scoreLabel = scoreLabels[result.mode];
+    const score = document.createElement("span"); score.className = "score";
+    score.textContent = hit.score.toFixed(result.mode === "hybrid" ? 4 : 3);
+    score.title = scoreLabel;
+    score.setAttribute("aria-label", `${scoreLabel} ${score.textContent}`);
     content.append(meta, title, description); card.append(rank, content, score); results.append(card);
   }
-  element("method").textContent = result.strategy === "exact" ? "Exact" : "IVF";
-  for (const [id, value] of Object.entries({ eligible: number(result.eligible), comparisons: number(result.comparisons), groups: number(result.clusters_searched), retrieval: milliseconds(result.retrieval_ms), encoding: milliseconds(result.embedding_ms), total: milliseconds(result.total_ms) })) element(id).textContent = value;
+  const vectorMethod = result.strategy === "exact" ? "Exact" : "IVF";
+  const modeLabel = modeLabels[result.mode];
+  const keywordOnly = result.mode === "keyword";
+  element("method").textContent = keywordOnly ? modeLabel : `${modeLabel} (${vectorMethod})`;
+  element("keyword-stat").hidden = result.mode === "semantic";
+  element("fusion-stat").hidden = result.mode !== "hybrid";
+  for (const [id, value] of Object.entries({
+    eligible: number(result.eligible),
+    comparisons: keywordOnly ? "-" : number(result.comparisons),
+    groups: keywordOnly ? "-" : number(result.clusters_searched),
+    retrieval: keywordOnly ? "-" : milliseconds(result.retrieval_ms),
+    encoding: keywordOnly ? "-" : milliseconds(result.embedding_ms),
+    "keyword-time": milliseconds(result.keyword_ms),
+    "fusion-time": milliseconds(result.fusion_ms),
+    total: milliseconds(result.total_ms),
+  })) element(id).textContent = value;
 }
 
 element<HTMLFormElement>("search-form").addEventListener("submit", async event => {
   event.preventDefault(); if (!query.value.trim()) return;
   error.hidden = true; submit.disabled = true; submit.textContent = "Searching…"; results.setAttribute("aria-busy", "true");
   try {
-    const result = await fetchJson<Result>("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: query.value.trim(), brand: selectedBrand(), strategy: element<HTMLSelectElement>("strategy").value, probes: Number(element<HTMLInputElement>("probes").value), k: 10 }) });
+    const result = await fetchJson<Result>("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: query.value.trim(), brand: selectedBrand(), mode: mode.value, strategy: strategy.value, probes: probes.disabled ? 8 : Number(probes.value), k: 10 }) });
     render(result);
   } catch (cause) { showError(cause instanceof Error ? cause.message : "Search failed"); }
   finally { submit.disabled = false; submit.textContent = "Search"; results.removeAttribute("aria-busy"); }
@@ -89,10 +124,11 @@ async function initialize() {
     }
     element<HTMLDataListElement>("brand-options").replaceChildren(options);
     brand.disabled = false;
-    element<HTMLInputElement>("probes").max = String(Math.max(1, info.clusters));
-    element<HTMLInputElement>("probes").value = String(Math.min(8, Math.max(1, info.clusters)));
+    mode.disabled = !info.keyword_available;
+    probes.max = String(Math.max(1, info.clusters));
+    probes.value = String(Math.min(8, Math.max(1, info.clusters)));
     const note = element("mode-note"); note.hidden = info.semantic;
-    note.textContent = "Sample catalog";
+    note.textContent = "Sample catalog uses word hashing for vector search.";
     submit.disabled = false;
   } catch (cause) { element("catalog-count").textContent = "Disconnected"; showError(cause instanceof Error ? cause.message : "Could not connect to the API"); }
 }

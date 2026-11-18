@@ -4,7 +4,7 @@ A product search engine built in C++ which I'm using to explore how vector searc
 
 The engine supports exact search and an IVF index that groups similar products together. You can search for a brand to filter by, change how many groups get searched, and compare the results and timings. There's also a simple planner that chooses between checking every eligible product and using the index.
 
-C++ handles indexing, filtering, retrieval, and saving/loading the index. Python handles data preparation and text embeddings using MiniLM. The demo is TypeScript with Vite, with a FastAPI service connecting it to the C++ API.
+C++ handles vector indexing, filtering, and retrieval. Python handles data preparation, MiniLM embeddings, keyword ranking, and rank fusion. The Vite demo uses a FastAPI service to connect to the C++ API.
 
 ## Running it
 
@@ -28,6 +28,8 @@ Open http://127.0.0.1:8000. Use Ctrl + C to stop both.
 
 The app searches the loaded catalog instead of the live internet. The optional brand filter suggests matching brands as you type. If you leave it blank you search all brands, and it doesn't extract constraints like price from your search text.
 
+Use **Search mode** to compare Keyword (BM25 over product titles), Semantic (the default vector search), and Hybrid (both rankings combined). The brand filter applies in all three modes. Vector search settings apply to Semantic and Hybrid.
+
 For a small offline demo after building:
 
 ```sh
@@ -49,6 +51,8 @@ That fixture has 216 handwritten products and uses word hashing instead of a lan
 The tests cover ranking, filters, invalid inputs, concurrent reads, index files, and comparison against a NumPy baseline. The HTTP test needs the offline fixture prepared first.
 
 ## Benchmarks
+
+The [hybrid search benchmark](docs/HYBRID_SEARCH.md) compares the three modes on held-out Amazon ESCI relevance judgments and measures search latency through the gateway.
 
 The benchmark scripts compare exact search, IVF, and the planner using separate development and test queries. They record recall, latency, comparisons, and the machine/configuration used.
 

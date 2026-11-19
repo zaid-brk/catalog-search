@@ -6,6 +6,21 @@ The engine supports exact search and an IVF index that groups similar products t
 
 C++ handles vector indexing, filtering, and retrieval. Python handles data preparation, MiniLM embeddings, keyword ranking, and rank fusion. The Vite demo uses a FastAPI service to connect to the C++ API.
 
+## Demo
+
+Hybrid search for "winter boots" with the Timberland brand filter on the 10,000-product Amazon ESCI catalog. The results panel shows the ranked products beside a breakdown of the search timings.
+
+![Hybrid search results for winter boots filtered to Timberland, with ranking and timing details](docs/screenshots/catalog-search-hybrid.png)
+
+<details>
+<summary>IVF search example from the earlier interface</summary>
+
+The same query with IVF and eight clusters selected.
+
+![IVF search results for winter boots filtered to Timberland, with eight clusters selected](docs/screenshots/catalog-search-ivf.png)
+
+</details>
+
 ## Running it
 
 You need a C++20 compiler, Boost 1.75+, Python 3.11, and Node 22.12+.
